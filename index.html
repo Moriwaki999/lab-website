@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医療政策・管理学研究室 | Ritsumeikan University</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   Base
+══════════════════════════════════════ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  background: #0a0f1e;
+  color: #e8eaf0;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════
+   Nav
+══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 60px;
+  background: rgba(10,15,30,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,180,180,0.12);
+  transition: background 0.3s;
+}
+
+.nav-logo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #00c8c8;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #7aa8c0;
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1.5px;
+  background: #00c8c8;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: #00c8c8; }
+.nav-links a:hover::after,
+.nav-links a.active::after { transform: scaleX(1); }
+
+@media (max-width: 600px) {
+  nav { padding: 0 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-logo { display: none; }
+}
+
+/* ══════════════════════════════════════
+   Section base
+══════════════════════════════════════ */
+section { padding: 6rem 2rem; }
+section:first-of-type { padding-top: 0; }
+
+.container { max-width: 960px; margin: 0 auto; }
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00c8c8;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #e8eaf0;
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
+}
+
+.section-desc {
+  color: #7aa8c0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 700px;
+}
+
+.subsection-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7aa8c0;
+  margin: 2.5rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.subsection-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+/* ══════════════════════════════════════
+   Hero
+══════════════════════════════════════ */
+#home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0f1e 0%, #0d2137 50%, #0a1a2e 100%);
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,180,180,0.12) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  animation: pulse 8s ease-in-out infinite;
+}
+#home::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,120,200,0.10) 0%, transparent 70%);
+  bottom: -50px; left: -50px;
+  animation: pulse 10s ease-in-out infinite reverse;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,180,180,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,180,180,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0,180,180,0.15);
+  border: 1px solid rgba(0,180,180,0.4);
+  color: #00c8c8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a0d4e8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #7aa8c0;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: #a8bfcf;
+  line-height: 1.9;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+/* Jump buttons */
+.jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.btn-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0,180,180,0.1);
+  border: 1px solid rgba(0,180,180,0.35);
+  color: #a0d8e8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1.4rem;
+  border-radius: 0.4rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-jump:hover {
+  background: rgba(0,180,180,0.2);
+  border-color: #00c8c8;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Stats strip */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: #080d1a;
+  border-top: 1px solid rgba(0,180,180,0.1);
+  border-bottom: 1px solid rgba(0,180,180,0.1);
+}
+@media (max-width: 640px) {
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(0,180,180,0.04); }
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00c8c8;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: #7aa8c0;
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════
+   About (Mission)
+══════════════════════════════════════ */
+#about { background: #0a0f1e; }
+
+.mission-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 680px) {
+  .mission-body { grid-template-columns: 1fr; }
+}
+
+.mission-text p {
+  color: #a8bfcf;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1.1rem 1.2rem;
+  background: rgba(0,180,180,0.05);
+  border-left: 3px solid #00c8c8;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.88rem;
+  color: #c0d4de;
+  line-height: 1.6;
+}
+.feature-list li::before {
+  content: '▸';
+  color: #00c8c8;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   Members
+══════════════════════════════════════ */
+#members { background: #080d1a; }
+
+.faculty-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+  background: linear-gradient(135deg, rgba(0,180,180,0.06), rgba(0,80,160,0.06));
+  border: 1px solid rgba(0,180,180,0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.faculty-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, #00c8c8, #0070c0);
+}
+
+.avatar {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a0a0, #005090);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem;
+  border: 3px solid rgba(0,180,180,0.3);
+  flex-shrink: 0;
+}
+
+.faculty-info h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e8eaf0;
+  margin-bottom: 0.3rem;
+}
+.faculty-info .role {
+  font-size: 0.75rem;
+  color: #00c8c8;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.faculty-info p {
+  font-size: 0.88rem;
+  color: #a8bfcf;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+.tag {
+  background: rgba(0,180,180,0.12);
+  border: 1px solid rgba(0,180,180,0.3);
+  color: #00c8c8;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.student-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 0.8rem;
+  padding: 1.4rem;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+}
+.student-card:hover {
+  border-color: rgba(0,180,180,0.35);
+  background: rgba(0,180,180,0.05);
+  transform: translateY(-3px);
+}
+
+.student-avatar {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a5c, #0d2137);
+  border: 2px solid rgba(0,180,180,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.9rem;
+}
+.student-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e8eaf0;
+  margin-bottom: 0.2rem;
+}
+.student-card .grade { font-size: 0.73rem; color: #7aa8c0; margin-bottom: 0.6rem; }
+.student-card .theme { font-size: 0.8rem; color: #a8bfcf; line-height: 1.6; }
+
+@media (max-width: 560px) {
+  .faculty-card { grid-template-columns: 1fr; }
+  .avatar { width: 72px; height: 72px; font-size: 1.8rem; }
+}
+
+/* ══════════════════════════════════════
+   Research
+══════════════════════════════════════ */
+#research { background: #0a0f1e; }
+
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.4rem;
+  margin-bottom: 4rem;
+}
+
+.area-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  padding: 1.8rem;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.area-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00c8c8, #0070c0);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.area-card:hover {
+  border-color: rgba(0,180,180,0.3);
+  background: rgba(0,180,180,0.04);
+  transform: translateY(-4px);
+}
+.area-card:hover::after { transform: scaleX(1); }
+
+.area-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.area-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e8eaf0;
+  margin-bottom: 0.7rem;
+  line-height: 1.4;
+}
+.area-card p { font-size: 0.83rem; color: #8aacbf; line-height: 1.8; }
+
+/* Publications */
+.pub-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
+
+.pub-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  padding: 1.4rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 0.7rem;
+  transition: border-color 0.3s;
+}
+.pub-item:hover { border-color: rgba(0,180,180,0.25); }
+
+.pub-year {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #00c8c8;
+  background: rgba(0,180,180,0.1);
+  border: 1px solid rgba(0,180,180,0.25);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  white-space: nowrap;
+  margin-top: 0.15rem;
+}
+.pub-content h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #d0e0ea;
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+.pub-content .authors { font-size: 0.78rem; color: #7aa8c0; margin-bottom: 0.2rem; }
+.pub-content .journal { font-size: 0.78rem; color: #5a8090; font-style: italic; }
+
+/* Grants */
+.grant-list { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+.grant-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  background: rgba(0,112,192,0.06);
+  border-left: 3px solid #0070c0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.86rem;
+  color: #a8bfcf;
+  line-height: 1.6;
+}
+.grant-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #4090d0;
+  background: rgba(0,112,192,0.15);
+  border: 1px solid rgba(0,112,192,0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ══════════════════════════════════════
+   Contact
+══════════════════════════════════════ */
+#contact { background: #080d1a; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.4rem;
+  margin-bottom: 2.5rem;
+}
+
+.info-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.9rem;
+  padding: 1.6rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+.info-card:hover {
+  border-color: rgba(0,180,180,0.3);
+  background: rgba(0,180,180,0.04);
+}
+.info-icon { font-size: 1.5rem; margin-bottom: 0.9rem; display: block; }
+.info-card h4 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00c8c8;
+  margin-bottom: 0.6rem;
+}
+.info-card p { font-size: 0.86rem; color: #a8bfcf; line-height: 1.7; }
+.info-card a { color: #4ab8d8; text-decoration: none; }
+.info-card a:hover { text-decoration: underline; }
+
+.access-block {
+  background: linear-gradient(135deg, rgba(0,180,180,0.06), rgba(0,80,160,0.06));
+  border: 1px solid rgba(0,180,180,0.15);
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.access-block h3 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7aa8c0;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.access-block h3::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+.access-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.access-list li {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 1rem;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.access-list .label { color: #00c8c8; font-weight: 600; font-size: 0.76rem; }
+.access-list .val { color: #a8bfcf; }
+
+.cta-block {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(0,180,180,0.04);
+  border: 1px dashed rgba(0,180,180,0.25);
+  border-radius: 1rem;
+}
+.cta-block h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e8eaf0;
+  margin-bottom: 0.7rem;
+}
+.cta-block p {
+  font-size: 0.86rem;
+  color: #7aa8c0;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid #00c8c8;
+  color: #00c8c8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 2rem;
+  border-radius: 0.4rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-outline:hover {
+  background: #00c8c8;
+  color: #0a0f1e;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   Footer
+══════════════════════════════════════ */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #3a5060;
+  font-size: 0.78rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ══════════════════════════════════════
+   Scroll-to-top
+══════════════════════════════════════ */
+#totop {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 44px; height: 44px;
+  background: rgba(0,180,180,0.2);
+  border: 1px solid rgba(0,180,180,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #00c8c8;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+  z-index: 90;
+}
+#totop.visible { opacity: 1; transform: translateY(0); }
+#totop:hover { background: rgba(0,180,180,0.4); }
+</style>
+</head>
+<body>
+
+<!-- ════ Nav ════ -->
+<nav>
+  <span class="nav-logo">HPM Lab / Ritsumeikan</span>
+  <ul class="nav-links">
+    <li><a href="#home">ホーム</a></li>
+    <li><a href="#about">研究室</a></li>
+    <li><a href="#members">メンバー</a></li>
+    <li><a href="#research">研究</a></li>
+    <li><a href="#contact">連絡</a></li>
+  </ul>
+</nav>
+
+<!-- ════ Hero ════ -->
+<section id="home">
+  <div class="grid-bg"></div>
+  <div class="hero-content">
+    <div class="badge">Ritsumeikan University</div>
+    <h1 class="hero-title">医療政策・管理学研究室</h1>
+    <p class="hero-subtitle">Health Policy and Management Research Laboratory</p>
+    <p class="hero-desc">
+      超高齢社会における医療費の持続可能性を科学的に問い直す。<br>
+      医療経済評価・臨床研究・医療技術評価（HTA）を通じて、<br>
+      根拠に基づく医療政策の実現に貢献します。
+    </p>
+    <div class="jump-links">
+      <a class="btn-jump" href="#about">研究室について</a>
+      <a class="btn-jump" href="#members">メンバー</a>
+      <a class="btn-jump" href="#research">研究内容</a>
+      <a class="btn-jump" href="#contact">連絡先</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Strip -->
+<div class="stats-strip">
+  <div class="stat-item"><div class="stat-num">HTA</div><div class="stat-label">医療技術評価</div></div>
+  <div class="stat-item"><div class="stat-num">HE</div><div class="stat-label">医療経済評価</div></div>
+  <div class="stat-item"><div class="stat-num">EBM</div><div class="stat-label">根拠に基づく医療</div></div>
+  <div class="stat-item"><div class="stat-num">2022–</div><div class="stat-label">研究活動継続中</div></div>
+</div>
+
+<!-- ════ About ════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Our Mission</div>
+    <h2 class="section-title">研究室について</h2>
+    <div class="mission-body">
+      <div class="mission-text">
+        <p>
+          先進国における医療費の増大は、少子高齢化・医療技術の進歩とともに深刻な社会課題となっています。
+          本研究室では、このような課題に対して科学的・定量的なアプローチで取り組んでいます。
+        </p>
+        <p>
+          医療技術の有効性・安全性・費用対効果を客観的に評価し、
+          臨床現場と医療政策の双方に対して、信頼性の高いエビデンスを提供することを使命としています。
+        </p>
+      </div>
+      <ul class="feature-list">
+        <li>医療経済評価（費用効果分析・費用便益分析）</li>
+        <li>医療技術評価（HTA）の公的分析</li>
+        <li>臨床研究・リアルワールドデータ解析</li>
+        <li>医療統計・意思決定モデリング</li>
+        <li>医療政策立案への科学的根拠の提供</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Members ════ -->
+<section id="members">
+  <div class="container">
+    <div class="section-label">People</div>
+    <h2 class="section-title">メンバー</h2>
+
+    <div class="subsection-label">Faculty</div>
+    <div class="faculty-card">
+      <div class="avatar">👤</div>
+      <div class="faculty-info">
+        <h3>氏名 ○○ ／ Name Placeholder</h3>
+        <div class="role">教授 / Professor</div>
+        <p>
+          立命館大学 生命科学部 生命医科学科。
+          医療経済学・医療技術評価（HTA）・医療統計学を専門とし、
+          公的 HTA 分析および医療政策立案のためのエビデンス創出を研究する。
+        </p>
+        <div class="tag-list">
+          <span class="tag">医療経済学</span>
+          <span class="tag">医療技術評価 (HTA)</span>
+          <span class="tag">医療統計学</span>
+          <span class="tag">費用効果分析</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-label">Graduate Students</div>
+    <div class="student-grid">
+      <div class="student-card">
+        <div class="student-avatar">👤</div>
+        <h4>氏名 ○○</h4>
+        <div class="grade">博士後期課程 ○年</div>
+        <div class="theme">研究テーマ: ○○○○○○○○○○</div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">👤</div>
+        <h4>氏名 ○○</h4>
+        <div class="grade">博士前期課程 ○年</div>
+        <div class="theme">研究テーマ: ○○○○○○○○○○</div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">👤</div>
+        <h4>氏名 ○○</h4>
+        <div class="grade">博士前期課程 ○年</div>
+        <div class="theme">研究テーマ: ○○○○○○○○○○</div>
+      </div>
+    </div>
+
+    <div class="subsection-label">Undergraduate Students</div>
+    <div class="student-grid">
+      <div class="student-card">
+        <div class="student-avatar">👤</div>
+        <h4>氏名 ○○</h4>
+        <div class="grade">学部 ○年</div>
+        <div class="theme">卒業研究テーマ: ○○○○○○○○○○</div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">👤</div>
+        <h4>氏名 ○○</h4>
+        <div class="grade">学部 ○年</div>
+        <div class="theme">卒業研究テーマ: ○○○○○○○○○○</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Research ════ -->
+<section id="research">
+  <div class="container">
+    <div class="section-label">Research</div>
+    <h2 class="section-title">研究内容</h2>
+    <p class="section-desc">
+      医療費の持続可能性という社会課題に対し、医療経済評価・医療技術評価・臨床統計の手法を用いて
+      科学的なエビデンスを創出し、医療政策と臨床実践の双方に貢献します。
+    </p>
+
+    <div class="subsection-label">Research Areas</div>
+    <div class="area-grid">
+      <div class="area-card">
+        <span class="area-icon">📊</span>
+        <h3>医療技術評価（HTA）</h3>
+        <p>医薬品・医療機器・医療手技の有効性・安全性・費用対効果を体系的に評価し、公的 HTA 分析（学術的見地からの評価）を実施します。</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">💹</span>
+        <h3>医療経済評価</h3>
+        <p>費用効果分析・費用便益分析・費用最小化分析などの手法を用いて、医療介入の経済的価値を定量的に明らかにします。</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">📐</span>
+        <h3>医療統計・モデリング</h3>
+        <p>マルコフモデル・個人ベースシミュレーションなどの意思決定分析モデルを構築し、長期的な医療アウトカムと費用を推計します。</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🔬</span>
+        <h3>リアルワールドデータ研究</h3>
+        <p>電子カルテ・レセプトデータ・患者登録データを活用したリアルワールドエビデンスの創出と解析を行います。</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🏛️</span>
+        <h3>医療政策・制度研究</h3>
+        <p>国内外の医療保険制度・薬価制度・HTA 制度を比較分析し、政策立案に資するエビデンスの提供を目指します。</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🎓</span>
+        <h3>医療人材育成</h3>
+        <p>医療経済・HTA 分野を担う専門人材の育成を通じて、日本の医療政策研究の発展に貢献します。</p>
+      </div>
+    </div>
+
+    <div class="subsection-label">Publications</div>
+    <div class="pub-list">
+      <div class="pub-item">
+        <span class="pub-year">2024</span>
+        <div class="pub-content">
+          <h4>論文タイトル（例）: Cost-Effectiveness Analysis of ○○ Therapy in Japan</h4>
+          <div class="authors">著者名 A, 著者名 B, et al.</div>
+          <div class="journal">Journal of Medical Economics, XX(X): XXX–XXX</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-year">2023</span>
+        <div class="pub-content">
+          <h4>論文タイトル（例）: Budget Impact Analysis of ○○ in Japanese Healthcare</h4>
+          <div class="authors">著者名 A, 著者名 C, et al.</div>
+          <div class="journal">Value in Health Regional Issues, XX: XXX–XXX</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <span class="pub-year">2022</span>
+        <div class="pub-content">
+          <h4>論文タイトル（例）: Real-World Evidence on ○○ from Japanese Claims Data</h4>
+          <div class="authors">著者名 B, 著者名 A, et al.</div>
+          <div class="journal">Pharmacoeconomics, XX(X): XXX–XXX</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-label">Research Grants</div>
+    <div class="grant-list">
+      <div class="grant-item">
+        <span class="grant-badge">科研費</span>
+        ○○○○に関する医療経済評価研究（代表 / ○○○○年度〜○○○○年度）
+      </div>
+      <div class="grant-item">
+        <span class="grant-badge">受託研究</span>
+        ○○○○の費用対効果評価に関する公的分析（○○○○年度）
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Contact ════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">連絡先</h2>
+    <p class="section-desc">研究室への見学・共同研究・取材などのご連絡はこちらからお気軽にどうぞ。</p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">📧</span>
+        <h4>Email</h4>
+        <p><a href="mailto:xxxx@fc.ritsumei.ac.jp">xxxx@fc.ritsumei.ac.jp</a></p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🏢</span>
+        <h4>所属</h4>
+        <p>立命館大学 生命科学部<br>生命医科学科<br>医療政策・管理学研究室</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🕐</span>
+        <h4>対応時間</h4>
+        <p>平日 9:00–17:00<br>（土日祝日を除く）</p>
+      </div>
+    </div>
+
+    <div class="access-block">
+      <h3>Access</h3>
+      <ul class="access-list">
+        <li>
+          <span class="label">住所</span>
+          <span class="val">〒525-8577 滋賀県草津市野路東 1-1-1<br>立命館大学 びわこ・くさつキャンパス（BKC）</span>
+        </li>
+        <li>
+          <span class="label">建物</span>
+          <span class="val">ライフサイエンス実験棟 ○○号室</span>
+        </li>
+        <li>
+          <span class="label">最寄駅</span>
+          <span class="val">JR琵琶湖線「南草津駅」西口より 徒歩約10分 またはバス</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cta-block">
+      <h3>研究室への参加を検討している方へ</h3>
+      <p>大学院（博士前期・後期課程）への進学、学部からの配属を検討している方は、<br>事前にメールにてご連絡ください。</p>
+      <a href="mailto:xxxx@fc.ritsumei.ac.jp" class="btn-outline">メールで問い合わせる</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2022– Division of Health Policy and Management, Ritsumeikan University. All rights reserved.
+</footer>
+
+<!-- Scroll to top -->
+<a href="#home" id="totop" title="トップへ">↑</a>
+
+<script>
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id], div.stats-strip');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const totop = document.getElementById('totop');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+  // Scroll-to-top button
+  window.addEventListener('scroll', () => {
+    totop.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>
