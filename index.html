@@ -791,9 +791,9 @@ footer {
     <h1 class="hero-title">医療政策・管理学研究室</h1>
     <p class="hero-subtitle">Health Policy and Management Research Laboratory</p>
     <p class="hero-desc">
-      超高齢社会における医療費の持続可能性を科学的に問い直す。<br>
+      超高齢社会と高度医療技術導入にともなう医療費の持続可能性を科学的に問い直す。<br>
       医療経済評価・臨床研究・医療技術評価（HTA）を通じて、<br>
-      根拠に基づく医療政策の実現に貢献します。
+      科学的根拠に基づく医療政策の実現に貢献します。
     </p>
     <div class="jump-links">
       <a class="btn-jump" href="#about">研究室について</a>
@@ -830,7 +830,7 @@ footer {
       </div>
       <ul class="feature-list">
         <li>医療経済評価（費用効果分析）</li>
-        <li>医療技術評価（HTA）の公的分析</li>
+        <li><a href="https://www.ritsumei.ac.jp/research/center/cheers/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">医療技術評価（HTA）の公的分析 ↗</a></li>
         <li>臨床研究・リアルワールドデータ解析</li>
         <li>医療統計・意思決定モデリング</li>
         <li>医療政策立案への科学的根拠の提供</li>
@@ -1104,47 +1104,28 @@ footer {
         <span class="area-icon">🎓</span>
         <h3>医療人材育成</h3>
         <p>医療経済・HTA 分野を担う専門人材の育成を通じて、日本の医療政策研究の発展に貢献します。</p>
+        <a href="https://hta-program.jp/" target="_blank" rel="noopener" class="profile-link" style="margin-top:1rem;">↗ HTAプログラム</a>
       </div>
     </div>
 
-    <div class="subsection-label">Publications</div>
-    <div class="pub-list">
+    <div class="subsection-label">Publications <span style="font-size:0.65rem;color:#5a8090;font-weight:400;text-transform:none;letter-spacing:0;">最新5件 / source: researchmap</span></div>
+    <div class="pub-list" id="pub-list-top">
+      <!-- ▼▼▼ 更新方法: publications.html の PUBLICATIONS_DATA を編集してください ▼▼▼ -->
       <div class="pub-item">
-        <span class="pub-year">2024</span>
-        <div class="pub-content">
-          <h4>論文タイトル（例）: Cost-Effectiveness Analysis of ○○ Therapy in Japan</h4>
-          <div class="authors">著者名 A, 著者名 B, et al.</div>
-          <div class="journal">Journal of Medical Economics, XX(X): XXX–XXX</div>
-        </div>
-      </div>
-      <div class="pub-item">
-        <span class="pub-year">2023</span>
-        <div class="pub-content">
-          <h4>論文タイトル（例）: Budget Impact Analysis of ○○ in Japanese Healthcare</h4>
-          <div class="authors">著者名 A, 著者名 C, et al.</div>
-          <div class="journal">Value in Health Regional Issues, XX: XXX–XXX</div>
-        </div>
-      </div>
-      <div class="pub-item">
-        <span class="pub-year">2022</span>
-        <div class="pub-content">
-          <h4>論文タイトル（例）: Real-World Evidence on ○○ from Japanese Claims Data</h4>
-          <div class="authors">著者名 B, 著者名 A, et al.</div>
-          <div class="journal">Pharmacoeconomics, XX(X): XXX–XXX</div>
-        </div>
+        <span class="pub-year">読込中</span>
+        <div class="pub-content"><h4>業績データを publications.html から読み込みます</h4></div>
       </div>
     </div>
+    <div style="text-align:right;margin-bottom:3rem;">
+      <a href="publications.html" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">業績一覧をすべて見る →</a>
+    </div>
 
-    <div class="subsection-label">Research Grants</div>
-    <div class="grant-list">
-      <div class="grant-item">
-        <span class="grant-badge">科研費</span>
-        ○○○○に関する医療経済評価研究（代表 / ○○○○年度〜○○○○年度）
-      </div>
-      <div class="grant-item">
-        <span class="grant-badge">受託研究</span>
-        ○○○○の費用対効果評価に関する公的分析（○○○○年度）
-      </div>
+    <div class="subsection-label">Research Grants <span style="font-size:0.65rem;color:#5a8090;font-weight:400;text-transform:none;letter-spacing:0;">最新5件</span></div>
+    <div class="grant-list" id="grant-list-top">
+      <!-- grants are injected by publications.html script -->
+    </div>
+    <div style="text-align:right;margin-bottom:2rem;">
+      <a href="publications.html#grants" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">科研費一覧をすべて見る →</a>
     </div>
   </div>
 </section>
@@ -1230,6 +1211,55 @@ footer {
   window.addEventListener('scroll', () => {
     totop.classList.toggle('visible', window.scrollY > 400);
   });
+
+  /* ════ Load publications data from publications.html (same-origin) ════
+     publications.html の PUBLICATIONS_DATA / GRANTS_DATA を直接 fetch して
+     トップページの最新5件エリアに注入します。
+  ════ */
+  (async () => {
+    try {
+      const res = await fetch('publications.html');
+      const text = await res.text();
+      const doc = new DOMParser().parseFromString(text, 'text/html');
+      const script = [...doc.querySelectorAll('script')]
+        .find(s => s.textContent.includes('PUBLICATIONS_DATA'));
+      if (!script) return;
+
+      // Extract data arrays via eval in isolated scope
+      const fn = new Function(
+        script.textContent
+          .replace(/\/\*[\s\S]*?\*\//g, '')     // strip block comments
+          .replace(/\/\/.*/g, '')                // strip line comments
+          .replace(/const /g, 'var ')
+          + '\nreturn { PUBLICATIONS_DATA, GRANTS_DATA };'
+      );
+      const { PUBLICATIONS_DATA, GRANTS_DATA } = fn();
+
+      // Build pub items
+      const buildPub = p => {
+        const t = p.doi
+          ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a>`
+          : p.title;
+        return `<div class="pub-item"><span class="pub-year">${p.year}</span>
+          <div class="pub-content">
+            <h4>${t}</h4>
+            <div class="authors">${p.authors}</div>
+            <div class="journal">${p.journal}</div>
+          </div></div>`;
+      };
+      const buildGrant = g =>
+        `<div class="grant-item"><span class="grant-badge">${g.badge}</span>
+          <span>${g.title}（${g.detail}）</span></div>`;
+
+      const pubEl = document.getElementById('pub-list-top');
+      if (pubEl) pubEl.innerHTML = PUBLICATIONS_DATA.slice(0, 5).map(buildPub).join('');
+
+      const grantEl = document.getElementById('grant-list-top');
+      if (grantEl) grantEl.innerHTML = GRANTS_DATA.slice(0, 5).map(buildGrant).join('');
+    } catch(e) {
+      console.warn('publications data load failed:', e);
+    }
+  })();
 
   // Cohort year switch
   function switchCohort(year, btn) {
