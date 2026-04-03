@@ -1189,6 +1189,7 @@ footer {
 <!-- Scroll to top -->
 <a href="#home" id="totop" title="トップへ">↑</a>
 
+<script src="publications-data.js"></script>
 <script>
   // Active nav highlight
   const sections = document.querySelectorAll('section[id], div.stats-strip');
@@ -1212,53 +1213,30 @@ footer {
     totop.classList.toggle('visible', window.scrollY > 400);
   });
 
-  /* ════ Load publications data from publications.html (same-origin) ════
-     publications.html の PUBLICATIONS_DATA / GRANTS_DATA を直接 fetch して
-     トップページの最新5件エリアに注入します。
-  ════ */
-  (async () => {
-    try {
-      const res = await fetch('publications.html');
-      const text = await res.text();
-      const doc = new DOMParser().parseFromString(text, 'text/html');
-      const script = [...doc.querySelectorAll('script')]
-        .find(s => s.textContent.includes('PUBLICATIONS_DATA'));
-      if (!script) return;
+  /* ════ Render top-5 from publications-data.js ════ */
+  (function() {
+    const buildPub = p => {
+      const t = p.doi
+        ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a>`
+        : p.title;
+      return `<div class="pub-item"><span class="pub-year">${p.year}</span>
+        <div class="pub-content">
+          <h4>${t}</h4>
+          <div class="authors">${p.authors}</div>
+          <div class="journal">${p.journal}</div>
+        </div></div>`;
+    };
+    const buildGrant = g =>
+      `<div class="grant-item"><span class="grant-badge">${g.badge}</span>
+        <span>${g.title}（${g.detail}）</span></div>`;
 
-      // Extract data arrays via eval in isolated scope
-      const fn = new Function(
-        script.textContent
-          .replace(/\/\*[\s\S]*?\*\//g, '')     // strip block comments
-          .replace(/\/\/.*/g, '')                // strip line comments
-          .replace(/const /g, 'var ')
-          + '\nreturn { PUBLICATIONS_DATA, GRANTS_DATA };'
-      );
-      const { PUBLICATIONS_DATA, GRANTS_DATA } = fn();
+    const pubEl = document.getElementById('pub-list-top');
+    if (pubEl && typeof PUBLICATIONS_DATA !== 'undefined')
+      pubEl.innerHTML = PUBLICATIONS_DATA.slice(0, 5).map(buildPub).join('');
 
-      // Build pub items
-      const buildPub = p => {
-        const t = p.doi
-          ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a>`
-          : p.title;
-        return `<div class="pub-item"><span class="pub-year">${p.year}</span>
-          <div class="pub-content">
-            <h4>${t}</h4>
-            <div class="authors">${p.authors}</div>
-            <div class="journal">${p.journal}</div>
-          </div></div>`;
-      };
-      const buildGrant = g =>
-        `<div class="grant-item"><span class="grant-badge">${g.badge}</span>
-          <span>${g.title}（${g.detail}）</span></div>`;
-
-      const pubEl = document.getElementById('pub-list-top');
-      if (pubEl) pubEl.innerHTML = PUBLICATIONS_DATA.slice(0, 5).map(buildPub).join('');
-
-      const grantEl = document.getElementById('grant-list-top');
-      if (grantEl) grantEl.innerHTML = GRANTS_DATA.slice(0, 5).map(buildGrant).join('');
-    } catch(e) {
-      console.warn('publications data load failed:', e);
-    }
+    const grantEl = document.getElementById('grant-list-top');
+    if (grantEl && typeof GRANTS_DATA !== 'undefined')
+      grantEl.innerHTML = GRANTS_DATA.slice(0, 5).map(buildGrant).join('');
   })();
 
   // Cohort year switch
