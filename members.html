@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Inter', sans-serif;
+    background: #0a0f1e;
+    color: #e8eaf0;
+    padding: 4rem 2rem;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #00c8c8;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #e8eaf0;
+    margin-bottom: 3rem;
+  }
+
+  /* ── Faculty ── */
+  .faculty-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    background: linear-gradient(135deg, rgba(0,180,180,0.06), rgba(0,80,160,0.06));
+    border: 1px solid rgba(0,180,180,0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faculty-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, #00c8c8, #0070c0);
+  }
+
+  .avatar {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00a0a0, #005090);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #fff;
+    flex-shrink: 0;
+    border: 3px solid rgba(0,180,180,0.3);
+  }
+
+  .faculty-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e8eaf0;
+    margin-bottom: 0.3rem;
+  }
+
+  .faculty-info .role {
+    font-size: 0.8rem;
+    color: #00c8c8;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .faculty-info p {
+    font-size: 0.9rem;
+    color: #a8bfcf;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .tag {
+    background: rgba(0,180,180,0.12);
+    border: 1px solid rgba(0,180,180,0.3);
+    color: #00c8c8;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Student grid ── */
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .student-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  }
+
+  .student-card:hover {
+    border-color: rgba(0,180,180,0.35);
+    background: rgba(0,180,180,0.05);
+    transform: translateY(-3px);
+  }
+
+  .student-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a3a5c, #0d2137);
+    border: 2px solid rgba(0,180,180,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .student-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e8eaf0;
+    margin-bottom: 0.2rem;
+  }
+
+  .student-card .grade {
+    font-size: 0.75rem;
+    color: #7aa8c0;
+    margin-bottom: 0.8rem;
+  }
+
+  .student-card .theme {
+    font-size: 0.82rem;
+    color: #a8bfcf;
+    line-height: 1.6;
+  }
+
+  .subsection-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7aa8c0;
+    margin: 2.5rem 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .subsection-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  @media (max-width: 560px) {
+    .faculty-card { grid-template-columns: 1fr; }
+    .avatar { width: 72px; height: 72px; font-size: 1.8rem; }
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 0 0;
+    color: #3a5060;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 3rem;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="section-label">People</div>
+  <h2 class="section-title">メンバー</h2>
+
+  <!-- Faculty -->
+  <div class="subsection-label">Faculty</div>
+
+  <div class="faculty-card">
+    <div class="avatar">👤</div>
+    <div class="faculty-info">
+      <h3>氏名 ○○ ／ Name Placeholder</h3>
+      <div class="role">教授 / Professor</div>
+      <p>
+        立命館大学 生命科学部 生命医科学科。
+        医療経済学・医療技術評価（HTA）・医療統計学を専門とし、
+        公的 HTA 分析および医療政策立案のためのエビデンス創出を研究する。
+      </p>
+      <div class="tag-list">
+        <span class="tag">医療経済学</span>
+        <span class="tag">医療技術評価 (HTA)</span>
+        <span class="tag">医療統計学</span>
+        <span class="tag">費用効果分析</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graduate -->
+  <div class="subsection-label">Graduate Students</div>
+  <div class="student-grid">
+    <div class="student-card">
+      <div class="student-avatar">👤</div>
+      <h4>氏名 ○○</h4>
+      <div class="grade">博士後期課程 ○年</div>
+      <div class="theme">研究テーマ: ○○○○○○○○○○</div>
+    </div>
+    <div class="student-card">
+      <div class="student-avatar">👤</div>
+      <h4>氏名 ○○</h4>
+      <div class="grade">博士前期課程 ○年</div>
+      <div class="theme">研究テーマ: ○○○○○○○○○○</div>
+    </div>
+    <div class="student-card">
+      <div class="student-avatar">👤</div>
+      <h4>氏名 ○○</h4>
+      <div class="grade">博士前期課程 ○年</div>
+      <div class="theme">研究テーマ: ○○○○○○○○○○</div>
+    </div>
+  </div>
+
+  <!-- Undergraduate -->
+  <div class="subsection-label">Undergraduate Students</div>
+  <div class="student-grid">
+    <div class="student-card">
+      <div class="student-avatar">👤</div>
+      <h4>氏名 ○○</h4>
+      <div class="grade">学部 ○年</div>
+      <div class="theme">卒業研究テーマ: ○○○○○○○○○○</div>
+    </div>
+    <div class="student-card">
+      <div class="student-avatar">👤</div>
+      <h4>氏名 ○○</h4>
+      <div class="grade">学部 ○年</div>
+      <div class="theme">卒業研究テーマ: ○○○○○○○○○○</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2022– Division of Health Policy and Management, Ritsumeikan University. All rights reserved.
+</footer>
+</body>
+</html>
