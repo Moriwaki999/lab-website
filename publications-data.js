@@ -8,6 +8,7 @@
 
 const PUBLICATIONS_DATA = [
   // ── 2026 ──
+  { year: 2026, title: "Vignette-Based Estimation of Utilities in Patients With Metastatic Triple-Negative Breast Cancer in Japan", authors: "Mao Yamaguchi, Kensuke Moriwaki, Tsuguo Iwatani, Kojiro Shimozuma", journal: "Value in Health Regional Issues 101619, 2026年3月", doi: null },
   { year: 2026, title: "Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Unresectable Advanced or Recurrent Gastric Cancer in Japan", authors: "Kosuke Morimoto, Kensuke Moriwaki, Yoshitaka Nishikawa, Tomomi Maeda, Mayumi Toyama, Nobukazu Agatsuma, Satomi Kojima, Takahiro Utsumi, Yoshimitsu Takahashi, Kojiro Shimozuma, Takeo Nakayama", journal: "PharmacoEconomics - Open, 2026年2月", doi: null },
   { year: 2026, title: "Cost-effectiveness analysis of low bone mass prevention in Chinese older men with excessive alcohol consumption: a modelling study.", authors: "Xihan Lin, Jinyu Liu, Lin Wang, Ting Liu, Yu Zhang, Kensuke Moriwaki, Ruxu You", journal: "BMJ Open 16(1): e095486, 2026年1月", doi: null },
   // ── 2025 ──
