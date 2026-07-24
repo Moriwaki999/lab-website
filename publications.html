@@ -97,6 +97,21 @@ nav {
 }
 .grant-item.hidden { display:none; }
 
+/* misc (books, reviews, lectures, presentations) */
+.misc-list { display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1rem; }
+.misc-item {
+  display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;
+  padding:1rem 1.2rem; background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.06); border-radius:0.6rem;
+  font-size:0.84rem; color:#a8bfcf; line-height:1.6; transition:border-color 0.3s;
+}
+.misc-item:hover { border-color:rgba(0,180,180,0.2); }
+.misc-year {
+  font-size:0.7rem; font-weight:700; color:#00c8c8;
+  background:rgba(0,180,180,0.08); border:1px solid rgba(0,180,180,0.2);
+  padding:0.25rem 0.5rem; border-radius:0.25rem; white-space:nowrap; margin-top:0.1rem;
+}
+
 footer {
   text-align:center; padding:2rem; color:#3a5060; font-size:0.78rem;
   border-top:1px solid rgba(255,255,255,0.05);
@@ -144,6 +159,34 @@ footer {
     <div class="section-label">Research Grants</div>
     <h2 class="section-title">科研費・研究費</h2>
     <div class="grant-list" id="grant-list-full"></div>
+  </div>
+
+  <!-- ══ Books ══ -->
+  <div id="books" style="padding-top:2rem;">
+    <div class="section-label">Books</div>
+    <h2 class="section-title">著書</h2>
+    <div class="misc-list" id="books-list"></div>
+  </div>
+
+  <!-- ══ Reviews ══ -->
+  <div id="reviews" style="padding-top:2rem;">
+    <div class="section-label">Reviews &amp; Commentary</div>
+    <h2 class="section-title">総説・解説等</h2>
+    <div class="misc-list" id="reviews-list"></div>
+  </div>
+
+  <!-- ══ Lectures ══ -->
+  <div id="lectures" style="padding-top:2rem;">
+    <div class="section-label">Invited Lectures</div>
+    <h2 class="section-title">講演</h2>
+    <div class="misc-list" id="lectures-list"></div>
+  </div>
+
+  <!-- ══ Presentations ══ -->
+  <div id="presentations" style="padding-top:2rem;">
+    <div class="section-label">Conference Presentations</div>
+    <h2 class="section-title">学会発表</h2>
+    <div class="misc-list" id="presentations-list"></div>
   </div>
 
 </div>
@@ -198,6 +241,19 @@ function filterPubs(year, btn) {
     el.classList.toggle('hidden', el.dataset.year !== year);
   });
 }
+
+function buildMiscHTML(item) {
+  return `
+    <div class="misc-item">
+      <span class="misc-year">${item.year}</span>
+      <span>${item.text}</span>
+    </div>`;
+}
+
+document.getElementById('books-list').innerHTML = BOOKS_DATA.map(buildMiscHTML).join('');
+document.getElementById('reviews-list').innerHTML = REVIEWS_DATA.map(buildMiscHTML).join('');
+document.getElementById('lectures-list').innerHTML = LECTURES_DATA.map(buildMiscHTML).join('');
+document.getElementById('presentations-list').innerHTML = PRESENTATIONS_DATA.map(buildMiscHTML).join('');
 
 /* ════ Sync top-5 to parent index.html (same-origin) ════ */
 try {
