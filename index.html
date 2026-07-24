@@ -557,6 +557,21 @@ section:first-of-type { padding-top: 0; }
 
 /* Grants */
 .grant-list { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+
+/* Misc publications (books, reviews, lectures, presentations) */
+.misc-list { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1rem; }
+.misc-item {
+  display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
+  padding: 1rem 1.2rem; background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 0.6rem;
+  font-size: 0.84rem; color: #a8bfcf; line-height: 1.6; transition: border-color 0.3s;
+}
+.misc-item:hover { border-color: rgba(0,180,180,0.2); }
+.misc-year {
+  font-size: 0.7rem; font-weight: 700; color: #00c8c8;
+  background: rgba(0,180,180,0.08); border: 1px solid rgba(0,180,180,0.2);
+  padding: 0.25rem 0.5rem; border-radius: 0.25rem; white-space: nowrap; margin-top: 0.1rem;
+}
 .grant-item {
   display: flex;
   align-items: flex-start;
@@ -1135,6 +1150,30 @@ footer {
     <div style="text-align:right;margin-bottom:2rem;">
       <a href="publications.html#grants" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">科研費一覧をすべて見る →</a>
     </div>
+
+    <div class="subsection-label">著書 <span style="font-size:0.65rem;color:#5a8090;font-weight:400;text-transform:none;letter-spacing:0;">最新5件</span></div>
+    <div class="misc-list" id="books-list-top"></div>
+    <div style="text-align:right;margin-bottom:2rem;">
+      <a href="publications.html#books" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">著書一覧をすべて見る →</a>
+    </div>
+
+    <div class="subsection-label">総説・解説等 <span style="font-size:0.65rem;color:#5a8090;font-weight:400;text-transform:none;letter-spacing:0;">最新5件</span></div>
+    <div class="misc-list" id="reviews-list-top"></div>
+    <div style="text-align:right;margin-bottom:2rem;">
+      <a href="publications.html#reviews" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">総説一覧をすべて見る →</a>
+    </div>
+
+    <div class="subsection-label">講演 <span style="font-size:0.65rem;color:#5a8090;font-weight:400;text-transform:none;letter-spacing:0;">最新5件</span></div>
+    <div class="misc-list" id="lectures-list-top"></div>
+    <div style="text-align:right;margin-bottom:2rem;">
+      <a href="publications.html#lectures" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">講演一覧をすべて見る →</a>
+    </div>
+
+    <div class="subsection-label">学会発表 <span style="font-size:0.65rem;color:#5a8090;font-weight:400;text-transform:none;letter-spacing:0;">最新5件</span></div>
+    <div class="misc-list" id="presentations-list-top"></div>
+    <div style="text-align:right;margin-bottom:2rem;">
+      <a href="publications.html#presentations" class="btn-outline" style="font-size:0.8rem;padding:0.5rem 1.4rem;">学会発表一覧をすべて見る →</a>
+    </div>
   </div>
 </section>
 
@@ -1245,6 +1284,25 @@ footer {
     const grantEl = document.getElementById('grant-list-top');
     if (grantEl && typeof GRANTS_DATA !== 'undefined')
       grantEl.innerHTML = GRANTS_DATA.slice(0, 5).map(buildGrant).join('');
+
+    const buildMisc = item =>
+      `<div class="misc-item"><span class="misc-year">${item.year}</span><span>${item.text}</span></div>`;
+
+    const booksEl = document.getElementById('books-list-top');
+    if (booksEl && typeof BOOKS_DATA !== 'undefined')
+      booksEl.innerHTML = BOOKS_DATA.slice(0, 5).map(buildMisc).join('');
+
+    const reviewsEl = document.getElementById('reviews-list-top');
+    if (reviewsEl && typeof REVIEWS_DATA !== 'undefined')
+      reviewsEl.innerHTML = REVIEWS_DATA.slice(0, 5).map(buildMisc).join('');
+
+    const lecturesEl = document.getElementById('lectures-list-top');
+    if (lecturesEl && typeof LECTURES_DATA !== 'undefined')
+      lecturesEl.innerHTML = LECTURES_DATA.slice(0, 5).map(buildMisc).join('');
+
+    const presentationsEl = document.getElementById('presentations-list-top');
+    if (presentationsEl && typeof PRESENTATIONS_DATA !== 'undefined')
+      presentationsEl.innerHTML = PRESENTATIONS_DATA.slice(0, 5).map(buildMisc).join('');
   })();
 
   // Cohort year switch
