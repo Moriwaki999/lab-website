@@ -74,6 +74,10 @@ const REVIEWS_DATA = [
 ];
 
 const LECTURES_DATA = [
+  { year: 2026, text: "Moriwaki K. The promise and perils of using AI in HTA in Japan. HTAi ASIA POLICY FORUM@Tokyo. 2026/11/05" },
+  { year: 2026, text: "森脇 健介. 骨粗鬆症とリアルワールドデータ. 第28回日本骨粗鬆症学会 教育講演. 2026/09/13" },
+  { year: 2026, text: "森脇 健介. 費用対効果評価の公的分析におけるリアルワールドデータ活用の要件と課題. 第31回日本薬剤疫学会 シンポジウム2「政策の意思決定に使えるRWE」. 2026/10/17" },
+  { year: 2026, text: "森脇 健介. 日本の費用対効果評価制度のいまと課題. 第17回CSP-HOR年会『日本版HTA（医療技術評価）の現在地と未来図—臨床現場と社会実装の視点から—』. 2026/07/26" },
   { year: 2026, text: "森脇 健介. 医療の高額化と医療技術評価 －費用対効果評価－. 姫路獨協大学 薬学部 第14回卒後教育セミナー. 2026/03/08" },
   { year: 2025, text: "森脇 健介. 遺伝子治療の価値をどう測る？測ってどうする？東山高等高校 模擬講義. 2025/10/31" },
   { year: 2025, text: "Moriwaki K. Development of a doctoral-level HTA education program through collaboration among three universities. ISPOR Real-World Evidence Summit 2025: Enhancing Expert Education in HTA: Challenges and Lessons From Thailand. 2025/09/29" },
