@@ -286,10 +286,13 @@ function filterPubs(year, btn) {
 }
 
 function buildMiscHTML(item) {
+  const link = item.url
+    ? ` <a class="pub-link" href="${item.url}" target="_blank" rel="noopener">ISPOR ↗</a>`
+    : '';
   return `
     <div class="misc-item">
       <span class="misc-year">${item.year}</span>
-      <span>${item.text}</span>
+      <span>${item.text}${link}</span>
     </div>`;
 }
 
