@@ -8,91 +8,111 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Noto Sans JP','Inter',sans-serif; background:#0a0f1e; color:#e8eaf0; }
+body { font-family: 'Noto Sans JP','Inter',sans-serif; background:#f4f8fb; color:#1e2d3d; }
 
 nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
   padding:0 2.5rem; height:60px;
-  background:rgba(10,15,30,0.9); backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(0,180,180,0.12);
+  background:rgba(255,255,255,0.95); backdrop-filter:blur(12px);
+  border-bottom:1px solid #dde8f0;
+  box-shadow:0 1px 8px rgba(0,60,100,0.06);
 }
-.nav-logo { font-size:0.8rem; font-weight:700; color:#00c8c8; letter-spacing:0.05em; }
-.nav-back { font-size:0.8rem; font-weight:600; color:#7aa8c0; text-decoration:none; transition:color 0.2s; }
-.nav-back:hover { color:#00c8c8; }
+.nav-logo { font-size:0.8rem; font-weight:700; color:#0077a8; letter-spacing:0.05em; }
+.nav-back { font-size:0.8rem; font-weight:600; color:#4a6878; text-decoration:none; transition:color 0.2s; }
+.nav-back:hover { color:#0077a8; }
 
 .page-hero {
   padding: 120px 2rem 4rem;
-  background: linear-gradient(135deg,#0a0f1e,#0d2137);
-  border-bottom: 1px solid rgba(0,180,180,0.1);
+  background: linear-gradient(135deg,#0c2d48,#125d8f);
+  border-bottom: 1px solid #b8d8ef;
 }
 .page-hero .badge {
-  display:inline-block; background:rgba(0,180,180,0.15);
-  border:1px solid rgba(0,180,180,0.4); color:#00c8c8;
+  display:inline-block; background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.4); color:#ffffff;
   font-size:0.72rem; font-weight:700; letter-spacing:0.15em;
   text-transform:uppercase; padding:0.3rem 1rem; border-radius:2rem; margin-bottom:1rem;
 }
-.page-hero h1 { font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; color:#e8eaf0; margin-bottom:0.5rem; }
-.page-hero p { font-size:0.88rem; color:#7aa8c0; }
+.page-hero h1 { font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; color:#ffffff; margin-bottom:0.5rem; }
+.page-hero p { font-size:0.88rem; color:rgba(255,255,255,0.8); }
 .page-hero .researchmap-link {
   display:inline-flex; align-items:center; gap:0.4rem; margin-top:1rem;
-  font-size:0.78rem; font-weight:600; color:#4ab8d8;
-  text-decoration:none; border:1px solid rgba(74,184,216,0.3);
-  padding:0.3rem 0.9rem; border-radius:0.3rem; transition:background 0.2s;
+  font-size:0.78rem; font-weight:600; color:#ffffff;
+  text-decoration:none; border:1px solid rgba(255,255,255,0.45);
+  padding:0.3rem 0.9rem; border-radius:0.3rem;
+  background:rgba(255,255,255,0.12); transition:background 0.2s;
 }
-.page-hero .researchmap-link:hover { background:rgba(74,184,216,0.1); }
+.page-hero .researchmap-link:hover { background:rgba(255,255,255,0.22); }
+
+/* section nav bar */
+.section-nav {
+  background:#ffffff; border-bottom:1px solid #dde8f0;
+  padding:0.9rem 2rem;
+  box-shadow:0 1px 4px rgba(0,60,100,0.04);
+}
+.section-nav-inner {
+  max-width:960px; margin:0 auto;
+  display:flex; flex-wrap:wrap; gap:0.6rem 1.4rem; font-size:0.78rem;
+}
+.section-nav-inner a {
+  color:#4a6878; text-decoration:none; transition:color 0.2s;
+  font-weight:600;
+}
+.section-nav-inner a:hover { color:#0077a8; }
 
 .container { max-width:960px; margin:0 auto; padding:4rem 2rem; }
 
 .section-label {
   font-size:0.7rem; font-weight:700; letter-spacing:0.2em;
-  text-transform:uppercase; color:#00c8c8; margin-bottom:0.6rem;
+  text-transform:uppercase; color:#0077a8; margin-bottom:0.6rem;
 }
 .section-title {
-  font-size:1.4rem; font-weight:700; color:#e8eaf0;
+  font-size:1.4rem; font-weight:700; color:#1e2d3d;
   margin-bottom:2rem; padding-bottom:0.8rem;
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid #dde8f0;
 }
 
 /* filter tabs */
 .filter-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
 .filter-tab {
-  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);
-  color:#7aa8c0; font-size:0.75rem; font-weight:600; letter-spacing:0.05em;
+  background:#ffffff; border:1px solid #cddde8;
+  color:#4a6878; font-size:0.75rem; font-weight:600; letter-spacing:0.05em;
   padding:0.4rem 1rem; border-radius:2rem; cursor:pointer; transition:all 0.2s;
 }
-.filter-tab:hover { border-color:rgba(0,180,180,0.4); color:#e8eaf0; }
-.filter-tab.active { background:rgba(0,180,180,0.15); border-color:#00c8c8; color:#00c8c8; }
+.filter-tab:hover { border-color:#0077a8; color:#0077a8; background:#f0f7fc; }
+.filter-tab.active { background:#0077a8; border-color:#0077a8; color:#ffffff; }
 
 .pub-list { display:flex; flex-direction:column; gap:1rem; margin-bottom:1rem; }
 .pub-item {
   display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start;
-  padding:1.4rem; background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.07); border-radius:0.7rem; transition:border-color 0.3s;
+  padding:1.4rem; background:#ffffff;
+  border:1px solid #dde8f0; border-radius:0.7rem;
+  transition:border-color 0.3s, box-shadow 0.3s;
+  box-shadow:0 1px 4px rgba(0,60,100,0.04);
 }
-.pub-item:hover { border-color:rgba(0,180,180,0.25); }
+.pub-item:hover { border-color:#0077a8; box-shadow:0 3px 12px rgba(0,100,160,0.09); }
 .pub-year {
-  font-size:0.72rem; font-weight:700; color:#00c8c8;
-  background:rgba(0,180,180,0.1); border:1px solid rgba(0,180,180,0.25);
+  font-size:0.72rem; font-weight:700; color:#0077a8;
+  background:#e6f4fb; border:1px solid #b0d4ea;
   padding:0.3rem 0.6rem; border-radius:0.3rem; white-space:nowrap; margin-top:0.15rem;
 }
-.pub-content h4 { font-size:0.92rem; font-weight:600; color:#d0e0ea; margin-bottom:0.3rem; line-height:1.5; }
-.pub-content h4 a { color:#4ab8d8; text-decoration:none; }
+.pub-content h4 { font-size:0.92rem; font-weight:600; color:#1e2d3d; margin-bottom:0.3rem; line-height:1.5; }
+.pub-content h4 a { color:#0077a8; text-decoration:none; }
 .pub-content h4 a:hover { text-decoration:underline; }
-.pub-content .authors { font-size:0.78rem; color:#7aa8c0; margin-bottom:0.2rem; }
-.pub-content .journal { font-size:0.78rem; color:#5a8090; font-style:italic; }
+.pub-content .authors { font-size:0.78rem; color:#4a6878; margin-bottom:0.2rem; }
+.pub-content .journal { font-size:0.78rem; color:#6a8898; font-style:italic; }
 .pub-item.hidden { display:none; }
 
 .grant-list { display:flex; flex-direction:column; gap:0.8rem; margin-bottom:2rem; }
 .grant-item {
   display:flex; align-items:flex-start; gap:1rem;
-  padding:1.1rem 1.4rem; background:rgba(0,112,192,0.06);
-  border-left:3px solid #0070c0; border-radius:0 0.5rem 0.5rem 0;
-  font-size:0.86rem; color:#a8bfcf; line-height:1.6;
+  padding:1.1rem 1.4rem; background:#f0f7fd;
+  border-left:3px solid #0077a8; border-radius:0 0.5rem 0.5rem 0;
+  font-size:0.86rem; color:#2a3f50; line-height:1.6;
 }
 .grant-badge {
-  font-size:0.68rem; font-weight:700; color:#4090d0;
-  background:rgba(0,112,192,0.15); border:1px solid rgba(0,112,192,0.3);
+  font-size:0.68rem; font-weight:700; color:#0077a8;
+  background:#e0eff8; border:1px solid #b0d0e8;
   padding:0.2rem 0.6rem; border-radius:0.25rem; white-space:nowrap; flex-shrink:0;
 }
 .grant-item.hidden { display:none; }
@@ -101,20 +121,22 @@ nav {
 .misc-list { display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1rem; }
 .misc-item {
   display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;
-  padding:1rem 1.2rem; background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.06); border-radius:0.6rem;
-  font-size:0.84rem; color:#a8bfcf; line-height:1.6; transition:border-color 0.3s;
+  padding:1rem 1.2rem; background:#ffffff;
+  border:1px solid #dde8f0; border-radius:0.6rem;
+  font-size:0.84rem; color:#3a5060; line-height:1.6;
+  transition:border-color 0.3s, box-shadow 0.3s;
+  box-shadow:0 1px 3px rgba(0,60,100,0.04);
 }
-.misc-item:hover { border-color:rgba(0,180,180,0.2); }
+.misc-item:hover { border-color:#0077a8; box-shadow:0 2px 8px rgba(0,100,160,0.08); }
 .misc-year {
-  font-size:0.7rem; font-weight:700; color:#00c8c8;
-  background:rgba(0,180,180,0.08); border:1px solid rgba(0,180,180,0.2);
+  font-size:0.7rem; font-weight:700; color:#0077a8;
+  background:#e6f4fb; border:1px solid #b0d4ea;
   padding:0.25rem 0.5rem; border-radius:0.25rem; white-space:nowrap; margin-top:0.1rem;
 }
 
 footer {
-  text-align:center; padding:2rem; color:#3a5060; font-size:0.78rem;
-  border-top:1px solid rgba(255,255,255,0.05);
+  text-align:center; padding:2rem; color:#7a9aaa; font-size:0.78rem;
+  border-top:1px solid #dde8f0; background:#ffffff;
 }
 </style>
 </head>
@@ -136,14 +158,14 @@ footer {
   </div>
 </div>
 
-<div style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);padding:0.9rem 2rem;">
-  <div style="max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0.6rem 1.4rem;font-size:0.78rem;">
-    <a href="#pub-list-full" style="color:#7aa8c0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00c8c8'" onmouseout="this.style.color='#7aa8c0'">▸ 原著論文</a>
-    <a href="#grants" style="color:#7aa8c0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00c8c8'" onmouseout="this.style.color='#7aa8c0'">▸ 科研費・研究費</a>
-    <a href="#books" style="color:#7aa8c0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00c8c8'" onmouseout="this.style.color='#7aa8c0'">▸ 著書</a>
-    <a href="#reviews" style="color:#7aa8c0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00c8c8'" onmouseout="this.style.color='#7aa8c0'">▸ 総説・解説等</a>
-    <a href="#lectures" style="color:#7aa8c0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00c8c8'" onmouseout="this.style.color='#7aa8c0'">▸ 講演</a>
-    <a href="#presentations" style="color:#7aa8c0;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00c8c8'" onmouseout="this.style.color='#7aa8c0'">▸ 学会発表</a>
+<div class="section-nav">
+  <div class="section-nav-inner">
+    <a href="#pub-list-full">▸ 原著論文</a>
+    <a href="#grants">▸ 科研費・研究費</a>
+    <a href="#books">▸ 著書</a>
+    <a href="#reviews">▸ 総説・解説等</a>
+    <a href="#lectures">▸ 講演</a>
+    <a href="#presentations">▸ 学会発表</a>
   </div>
 </div>
 
