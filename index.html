@@ -799,6 +799,53 @@ footer {
 }
 #totop.visible { opacity: 1; transform: translateY(0); }
 #totop:hover { background: #005f88; }
+
+/* ══════════════════════════════════════
+   Keyword tooltips
+══════════════════════════════════════ */
+.feature-list li {
+  position: relative;
+  cursor: default;
+}
+.feature-list li .kw {
+  border-bottom: 1.5px dotted #0077a8;
+  cursor: help;
+}
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  width: 300px;
+  background: #1e2d3d;
+  color: #e0eef8;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 6px 20px rgba(0,40,80,0.22);
+  transition: opacity 0.18s, transform 0.18s;
+  transform: translateY(4px);
+  z-index: 200;
+  pointer-events: none;
+  white-space: normal;
+}
+.tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 18px;
+  border: 7px solid transparent;
+  border-top-color: #1e2d3d;
+}
+.feature-list li:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 680px) {
+  .tooltip-text { width: 240px; }
+}
 </style>
 </head>
 <body>
@@ -861,11 +908,26 @@ footer {
         </p>
       </div>
       <ul class="feature-list">
-        <li>医療経済評価（費用効果分析）</li>
-        <li>医療技術評価（HTA）</li>
-        <li>臨床研究・リアルワールドデータ解析</li>
-        <li>医療統計・意思決定モデリング</li>
-        <li>医療政策立案への科学的根拠の提供</li>
+        <li>
+          <span class="kw">医療経済評価（費用効果分析）</span>
+          <span class="tooltip-text">治療薬・医療機器などの「費用」と「効果（延命・QOL 改善など）」を比較し、限られた医療資源を最も効果的に配分する方法を検討する分野。増分費用効果比（ICER）などの指標を用いて経済的価値を定量化します。</span>
+        </li>
+        <li>
+          <span class="kw">医療技術評価（HTA）</span>
+          <span class="tooltip-text">Health Technology Assessment の略。新薬・医療機器・医療手技を有効性・安全性・費用対効果・社会的影響の観点から体系的に評価し、保険収載や薬価決定など医療政策上の意思決定を科学的に支援します。</span>
+        </li>
+        <li>
+          <span class="kw">臨床研究・リアルワールドデータ解析</span>
+          <span class="tooltip-text">電子カルテ・レセプトデータ・患者登録データなど実診療で得られたデータを活用し、実臨床における治療効果・安全性・患者アウトカムを明らかにする研究手法です。</span>
+        </li>
+        <li>
+          <span class="kw">医療統計・意思決定モデリング</span>
+          <span class="tooltip-text">マルコフモデルや決定木などの数理モデルを用いて、長期的な治療アウトカムをシミュレーション。不確実性を考慮した上で、最適な医療上の意思決定を支援する分析手法です。</span>
+        </li>
+        <li>
+          <span class="kw">医療政策立案への科学的根拠の提供</span>
+          <span class="tooltip-text">費用効果分析や RWD 研究で得られたエビデンスを、薬価制度改革・保険給付の決定・ガイドライン策定など医療政策の現場へ橋渡しする活動です。学術的な視点から政策立案を支援します。</span>
+        </li>
       </ul>
     </div>
   </div>
