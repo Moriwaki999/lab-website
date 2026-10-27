@@ -100,7 +100,15 @@ nav {
 .pub-content h4 a { color:#0077a8; text-decoration:none; }
 .pub-content h4 a:hover { text-decoration:underline; }
 .pub-content .authors { font-size:0.78rem; color:#4a6878; margin-bottom:0.2rem; }
-.pub-content .journal { font-size:0.78rem; color:#6a8898; font-style:italic; }
+.pub-content .journal { font-size:0.78rem; color:#6a8898; font-style:italic; margin-bottom:0.4rem; }
+.pub-link {
+  display:inline-flex; align-items:center; gap:0.3rem;
+  font-size:0.7rem; font-weight:700; letter-spacing:0.04em;
+  color:#0077a8; background:#e6f4fb; border:1px solid #b0d4ea;
+  padding:0.18rem 0.6rem; border-radius:0.3rem; text-decoration:none;
+  transition:background 0.2s, border-color 0.2s;
+}
+.pub-link:hover { background:#c8e8f6; border-color:#0077a8; }
 .pub-item.hidden { display:none; }
 
 .grant-list { display:flex; flex-direction:column; gap:0.8rem; margin-bottom:2rem; }
@@ -236,6 +244,7 @@ function buildPubHTML(p) {
   const titleHtml = p.doi
     ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a>`
     : p.title;
+  const pmUrl = 'https://pubmed.ncbi.nlm.nih.gov/?term=' + encodeURIComponent(p.title);
   return `
     <div class="pub-item" data-year="${p.year}">
       <span class="pub-year">${p.year}</span>
@@ -243,6 +252,7 @@ function buildPubHTML(p) {
         <h4>${titleHtml}</h4>
         <div class="authors">${p.authors}</div>
         <div class="journal">${p.journal}</div>
+        <a class="pub-link" href="${pmUrl}" target="_blank" rel="noopener">PubMed ↗</a>
       </div>
     </div>`;
 }

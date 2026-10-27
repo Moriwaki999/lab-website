@@ -560,7 +560,15 @@ section:first-of-type { padding-top: 0; }
   line-height: 1.5;
 }
 .pub-content .authors { font-size: 0.78rem; color: #4a6878; margin-bottom: 0.2rem; }
-.pub-content .journal { font-size: 0.78rem; color: #6a8898; font-style: italic; }
+.pub-content .journal { font-size: 0.78rem; color: #6a8898; font-style: italic; margin-bottom: 0.4rem; }
+.pub-link {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+  color: #0077a8; background: #e6f4fb; border: 1px solid #b0d4ea;
+  padding: 0.18rem 0.6rem; border-radius: 0.3rem; text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.pub-link:hover { background: #c8e8f6; border-color: #0077a8; }
 
 /* Grants */
 .grant-list { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
@@ -1531,11 +1539,13 @@ footer {
       const t = p.doi
         ? `<a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">${p.title}</a>`
         : p.title;
+      const pmUrl = 'https://pubmed.ncbi.nlm.nih.gov/?term=' + encodeURIComponent(p.title);
       return `<div class="pub-item"><span class="pub-year">${p.year}</span>
         <div class="pub-content">
           <h4>${t}</h4>
           <div class="authors">${p.authors}</div>
           <div class="journal">${p.journal}</div>
+          <a class="pub-link" href="${pmUrl}" target="_blank" rel="noopener">PubMed ↗</a>
         </div></div>`;
     };
     const buildGrant = g =>
