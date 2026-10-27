@@ -801,6 +801,83 @@ footer {
 #totop:hover { background: #005f88; }
 
 /* ══════════════════════════════════════
+   News
+══════════════════════════════════════ */
+#news { background: #f4f8fb; }
+
+.news-list { display: flex; flex-direction: column; gap: 0; }
+
+.news-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 0 1.6rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid #e0eaf2;
+  align-items: start;
+  transition: background 0.2s;
+}
+.news-item:last-child { border-bottom: none; }
+
+.news-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.1rem;
+}
+.news-date {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4a6878;
+  white-space: nowrap;
+}
+.news-cat {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.18rem 0.6rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+}
+.news-cat.cat-paper    { background: #e0f0f8; color: #0077a8; border: 1px solid #b0d4ea; }
+.news-cat.cat-lecture  { background: #e2f5f0; color: #007a68; border: 1px solid #9dd5c8; }
+.news-cat.cat-conf     { background: #fef0e0; color: #a05800; border: 1px solid #f0c880; }
+.news-cat.cat-member   { background: #f0e8f8; color: #6b3b9a; border: 1px solid #c8a8e0; }
+.news-cat.cat-other    { background: #f0f0f0; color: #4a5860; border: 1px solid #ccd4da; }
+
+.news-body {
+  font-size: 0.88rem;
+  color: #2a3f52;
+  line-height: 1.7;
+}
+
+.news-more {
+  margin-top: 2rem;
+  text-align: center;
+}
+.news-more-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1.5px solid #0077a8;
+  color: #0077a8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.55rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.news-more-toggle:hover { background: #0077a8; color: #fff; }
+.news-item.news-hidden { display: none; }
+
+@media (max-width: 560px) {
+  .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .news-meta { flex-direction: row; align-items: center; }
+}
+
+/* ══════════════════════════════════════
    Keyword tooltips
 ══════════════════════════════════════ */
 .feature-list li {
@@ -855,6 +932,7 @@ footer {
   <span class="nav-logo">HPM Lab / Ritsumeikan</span>
   <ul class="nav-links">
     <li><a href="#home">ホーム</a></li>
+    <li><a href="#news">ニュース</a></li>
     <li><a href="#about">研究室</a></li>
     <li><a href="#members">メンバー</a></li>
     <li><a href="#research">研究</a></li>
@@ -875,6 +953,7 @@ footer {
       科学的根拠に基づく医療政策の実現に貢献します。
     </p>
     <div class="jump-links">
+      <a class="btn-jump" href="#news">ニュース</a>
       <a class="btn-jump" href="#about">研究室について</a>
       <a class="btn-jump" href="#members">メンバー</a>
       <a class="btn-jump" href="#research">研究内容</a>
@@ -890,6 +969,108 @@ footer {
   <div class="stat-item"><div class="stat-num">EBM</div><div class="stat-label">根拠に基づく医療</div></div>
   <div class="stat-item"><div class="stat-num">Since 2022–</div><div class="stat-label">研究活動継続中</div></div>
 </div>
+
+<!-- ════ News ════ -->
+<section id="news">
+  <div class="container">
+    <div class="section-label">News</div>
+    <h2 class="section-title">最近の出来事</h2>
+    <div class="news-list" id="news-list">
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="news-date">2026年11月</span>
+          <span class="news-cat cat-lecture">講演</span>
+        </div>
+        <div class="news-body">HTAi ASIA POLICY FORUM（東京）にて招待講演「The promise and perils of using AI in HTA in Japan」を行いました。</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="news-date">2026年10月</span>
+          <span class="news-cat cat-lecture">講演</span>
+        </div>
+        <div class="news-body">第31回日本薬剤疫学会 シンポジウム2「政策の意思決定に使えるRWE」にて招待講演を行いました。</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="news-date">2026年9月</span>
+          <span class="news-cat cat-paper">論文</span>
+        </div>
+        <div class="news-body">Kashiwa &amp; Moriwaki「Healthcare Cost Patterns in CDK4/6 Inhibitor-Treated HR+/HER2− Metastatic Breast Cancer」が <em>Clinical Drug Investigation</em> に掲載されました。</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="news-date">2026年9月</span>
+          <span class="news-cat cat-lecture">講演</span>
+        </div>
+        <div class="news-body">第28回日本骨粗鬆症学会（大阪）にて教育講演「骨粗鬆症とリアルワールドデータ」を行いました。</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="news-date">2026年7月</span>
+          <span class="news-cat cat-paper">論文</span>
+        </div>
+        <div class="news-body">Ariga, Moriwaki et al.「Cost-effectiveness analysis of chemoradiotherapy compared to surgery in stage I esophageal squamous cell carcinoma」が <em>International Journal of Clinical Oncology</em> に掲載されました。</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="news-date">2026年7月</span>
+          <span class="news-cat cat-lecture">講演</span>
+        </div>
+        <div class="news-body">第17回CSP-HOR年会「日本版HTAの現在地と未来図」にて招待講演「日本の費用対効果評価制度のいまと課題」を行いました。</div>
+      </div>
+
+      <div class="news-item news-hidden">
+        <div class="news-meta">
+          <span class="news-date">2026年5月</span>
+          <span class="news-cat cat-conf">学会発表</span>
+        </div>
+        <div class="news-body">ISPOR 2026 Latin America にて研究室から19件の演題を発表しました。</div>
+      </div>
+
+      <div class="news-item news-hidden">
+        <div class="news-meta">
+          <span class="news-date">2026年4月</span>
+          <span class="news-cat cat-member">メンバー</span>
+        </div>
+        <div class="news-body">2026年度新メンバーが加入しました（M2・M1・B4 各学年）。</div>
+      </div>
+
+      <div class="news-item news-hidden">
+        <div class="news-meta">
+          <span class="news-date">2026年3月</span>
+          <span class="news-cat cat-paper">論文</span>
+        </div>
+        <div class="news-body">Yamaguchi et al.「Vignette-Based Estimation of Utilities in Patients With Metastatic Triple-Negative Breast Cancer in Japan」が <em>Value in Health Regional Issues</em> に掲載されました。</div>
+      </div>
+
+      <div class="news-item news-hidden">
+        <div class="news-meta">
+          <span class="news-date">2026年2月</span>
+          <span class="news-cat cat-paper">論文</span>
+        </div>
+        <div class="news-body">Morimoto &amp; Moriwaki et al.「Comparative Cost-Effectiveness Analysis of Multiple First-Line Treatments for HER2-Negative Advanced or Recurrent Gastric Cancer in Japan」が <em>PharmacoEconomics - Open</em> に掲載されました。</div>
+      </div>
+
+      <div class="news-item news-hidden">
+        <div class="news-meta">
+          <span class="news-date">2026年1月</span>
+          <span class="news-cat cat-paper">論文</span>
+        </div>
+        <div class="news-body">Lin, Moriwaki et al.「Cost-effectiveness analysis of low bone mass prevention in Chinese older men with excessive alcohol consumption」が <em>BMJ Open</em> に掲載されました。</div>
+      </div>
+
+    </div>
+    <div class="news-more">
+      <button class="news-more-toggle" onclick="toggleNewsMore(this)">▾ もっと見る</button>
+    </div>
+  </div>
+</section>
 
 <!-- ════ About ════ -->
 <section id="about">
@@ -1336,6 +1517,13 @@ footer {
   window.addEventListener('scroll', () => {
     totop.classList.toggle('visible', window.scrollY > 400);
   });
+
+  // News "もっと見る"
+  window.toggleNewsMore = function(btn) {
+    const hidden = document.querySelectorAll('.news-item.news-hidden');
+    hidden.forEach(el => el.classList.remove('news-hidden'));
+    btn.closest('.news-more').style.display = 'none';
+  };
 
   /* ════ Render top-5 from publications-data.js ════ */
   (function() {
