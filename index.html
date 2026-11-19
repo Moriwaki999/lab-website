@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>医療政策・管理学研究室 | Ritsumeikan University</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════
    Base
@@ -930,6 +930,216 @@ footer {
 }
 @media (max-width: 680px) {
   .tooltip-text { width: 240px; }
+}
+
+/* ══════════════════════════════════════
+   Cute theme（パステル・丸み）
+   上の基本スタイルを色・形だけ上書きする
+══════════════════════════════════════ */
+:root {
+  --c-main: #e06b95;      /* ピンク（文字・アクセント） */
+  --c-main-dk: #c4527c;
+  --c-soft: #ffe3ec;      /* 淡いピンク */
+  --c-line: #f7cfdc;
+  --c-peach: #ffd9c2;
+  --c-mint: #c9eee2;
+  --c-lav: #e3dafa;
+  --c-cream: #fff8f4;
+  --c-text: #4b3a45;
+  --c-sub: #7a6470;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  background: var(--c-cream);
+  color: var(--c-text);
+}
+
+/* Nav */
+nav {
+  background: rgba(255,250,247,0.92);
+  border-bottom: 2px dotted var(--c-line);
+  box-shadow: 0 2px 12px rgba(224,107,149,0.08);
+}
+.nav-logo { color: var(--c-main); }
+.nav-logo::before { content: '✿ '; }
+.nav-links a { color: var(--c-sub); }
+.nav-links a::after { background: var(--c-main); height: 3px; border-radius: 3px; }
+.nav-links a:hover, .nav-links a.active { color: var(--c-main); }
+
+/* 見出し */
+.section-label, .subsection-label, .info-card h4, .access-block h3 { color: var(--c-main); }
+.section-label::before { content: '♡ '; }
+.section-title { color: var(--c-text); }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 64px; height: 8px;
+  margin-top: 0.7rem;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f7a8c4, #ffc9a8, #b9e6d6);
+}
+.section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
+.info-card p, .access-list .val, .cta-block p { color: var(--c-sub); }
+.subsection-label::after, .access-block h3::after {
+  height: 0;
+  border-top: 2px dashed var(--c-line);
+  background: none;
+}
+.grade-label {
+  display: inline-block;
+  color: var(--c-main-dk);
+  background: var(--c-soft);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+}
+
+/* Hero */
+#home { background: linear-gradient(135deg, #ffe1ea 0%, #ffeedd 45%, #e6f6ef 75%, #ece4fb 100%); }
+#home::before { background: radial-gradient(circle, rgba(255,170,200,0.45) 0%, transparent 70%); }
+#home::after  { background: radial-gradient(circle, rgba(170,225,205,0.5) 0%, transparent 70%); }
+.grid-bg {
+  background-image: radial-gradient(rgba(224,107,149,0.18) 2px, transparent 2px);
+  background-size: 28px 28px;
+}
+.badge {
+  background: #ffffff;
+  border: 2px solid var(--c-line);
+  color: var(--c-main);
+  box-shadow: 0 3px 0 var(--c-line);
+}
+.hero-title {
+  background: none;
+  -webkit-text-fill-color: var(--c-text);
+  color: var(--c-text);
+  text-shadow: 3px 3px 0 #ffffff, 5px 5px 0 rgba(247,168,196,0.45);
+}
+.hero-subtitle { color: var(--c-main); font-weight: 500; }
+.hero-desc { color: var(--c-sub); }
+.btn-jump {
+  background: #ffffff;
+  border: 2px solid var(--c-line);
+  color: var(--c-main-dk);
+  border-radius: 2rem;
+  box-shadow: 0 4px 0 var(--c-line);
+}
+.btn-jump:hover {
+  background: var(--c-soft);
+  border-color: #f2a6c1;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 var(--c-line);
+}
+
+/* Stats */
+.stats-strip { background: #ffffff; border-color: var(--c-line); }
+.stat-item { border-right: 2px dotted var(--c-line); }
+.stat-item:hover { background: var(--c-soft); }
+.stat-item:nth-child(4n+1) .stat-num { color: #e06b95; }
+.stat-item:nth-child(4n+2) .stat-num { color: #e88a55; }
+.stat-item:nth-child(4n+3) .stat-num { color: #3fa585; }
+.stat-item:nth-child(4n+4) .stat-num { color: #8a6ad0; }
+.stat-label { color: var(--c-sub); }
+
+/* セクション背景 */
+#news, #members, #contact { background: var(--c-cream); }
+#about, #research { background: #ffffff; }
+
+/* カード共通：まるく・ふんわり */
+.faculty-card, .student-card, .area-card, .pub-item, .misc-item,
+.info-card, .access-block, .cta-block {
+  border: 2px solid var(--c-line);
+  border-radius: 1.4rem;
+  box-shadow: 0 4px 0 rgba(247,207,220,0.6);
+}
+.faculty-card:hover, .student-card:hover, .area-card:hover, .pub-item:hover,
+.misc-item:hover, .info-card:hover {
+  border-color: #f2a6c1;
+  box-shadow: 0 8px 0 rgba(247,207,220,0.75);
+}
+.faculty-card::before { width: 8px; background: linear-gradient(180deg, #f7a8c4, #ffc9a8, #b9e6d6); }
+.avatar {
+  background: linear-gradient(135deg, #ffd3e1, #ffe6d3);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 3px var(--c-line);
+}
+.student-avatar { background: var(--c-soft); border: 2px solid var(--c-line); }
+.student-card:nth-child(4n+2) .student-avatar { background: var(--c-peach); }
+.student-card:nth-child(4n+3) .student-avatar { background: var(--c-mint); }
+.student-card:nth-child(4n+4) .student-avatar { background: var(--c-lav); }
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--c-text); }
+.faculty-info .role, .student-card .grade { color: var(--c-main); }
+.area-card { background: #fffafc; }
+.area-card::after { height: 5px; background: linear-gradient(90deg, #f7a8c4, #ffc9a8, #b9e6d6); }
+.area-card:nth-child(3n+2) { background: #fffaf5; }
+.area-card:nth-child(3n+3) { background: #f7fdfa; }
+
+/* タグ・バッジ・ボタン */
+.tag, .pub-year, .misc-year, .pub-link, .grant-badge {
+  background: var(--c-soft);
+  border: 1.5px solid var(--c-line);
+  color: var(--c-main-dk);
+  border-radius: 2rem;
+}
+.pub-link:hover { background: #ffd0df; border-color: var(--c-main); }
+.profile-link {
+  background: #ffffff;
+  border: 2px solid var(--c-line);
+  color: var(--c-main-dk);
+  border-radius: 2rem;
+}
+.profile-link:hover { background: var(--c-soft); border-color: #f2a6c1; }
+.btn-outline, .news-more-toggle {
+  border: 2px solid var(--c-main);
+  color: var(--c-main);
+  border-radius: 2rem;
+}
+.btn-outline:hover, .news-more-toggle:hover { background: var(--c-main); color: #ffffff; }
+.year-tab { border: 2px solid var(--c-line); color: var(--c-sub); }
+.year-tab:hover { border-color: #f2a6c1; color: var(--c-main); background: var(--c-soft); }
+.year-tab.active { background: var(--c-main); border-color: var(--c-main); color: #ffffff; }
+
+/* リスト系 */
+.feature-list li, .grant-item {
+  background: var(--c-soft);
+  border-left: none;
+  border-radius: 1rem;
+  color: var(--c-text);
+}
+.feature-list li::before { content: '✿'; color: var(--c-main); }
+.feature-list li .kw { border-bottom-color: var(--c-main); }
+.tooltip-text { background: #5a4250; color: #fff3f7; border-radius: 1rem; }
+.tooltip-text::after { border-top-color: #5a4250; }
+
+/* ニュース */
+.news-list {
+  background: #ffffff;
+  border: 2px solid var(--c-line);
+  border-radius: 1.4rem;
+  padding: 0.4rem 1.6rem;
+}
+.news-item { border-bottom: 2px dotted var(--c-line); }
+.news-date { color: var(--c-sub); }
+.news-body a { color: var(--c-main-dk); font-weight: 700; }
+.news-cat.cat-paper   { background: #ffe3ec; color: #c4527c; border-color: #f7cfdc; }
+.news-cat.cat-lecture { background: #dcf3ea; color: #2f8a6c; border-color: #b4e2d1; }
+.news-cat.cat-conf    { background: #ffe9d9; color: #b85e22; border-color: #ffcfae; }
+.news-cat.cat-member  { background: #ece4fb; color: #6f51b5; border-color: #d4c6f3; }
+
+/* 連絡先・フッター */
+.access-list .label { color: var(--c-main); }
+.info-card a { color: var(--c-main-dk); }
+.cta-block { border-style: dashed; background: #fffafc; }
+footer {
+  background: linear-gradient(90deg, #ffe1ea, #ffeedd, #e6f6ef);
+  border-top: none;
+  color: var(--c-sub);
+}
+footer::before { content: '✿ ♡ ✿'; display: block; color: var(--c-main); margin-bottom: 0.4rem; letter-spacing: 0.4em; }
+#totop { background: var(--c-main); box-shadow: 0 4px 0 var(--c-main-dk); }
+#totop:hover { background: var(--c-main-dk); }
+
+@media (max-width: 560px) {
+  .news-list { padding: 0.2rem 1rem; }
 }
 </style>
 </head>
