@@ -1,284 +1,283 @@
-@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=BIZ+UDPGothic:wght@400;700&display=swap');
 
-/* 2026-11-20 学生さんに受ける：ノートと付箋
-   罫線ノートの背景、蛍光ペンの見出し、付箋の学生カード、マスキングテープ */
+/* 2026-11-21 ポップ：キャンディ・コンフェッティ
+   ビビッドなマゼンタ×ターコイズ×サンシャイン、紙吹雪、ポップ体の見出し、波線 */
 :root {
-  --ink: #1f3a68;         /* 青インク（本文・見出し） */
-  --ink-sub: #3d4f6b;
-  --pen-red: #c8323c;     /* 赤ペン（余白線・アクセント） */
-  --hl: #fff27a;          /* 蛍光イエロー */
-  --rule: #d7e3f2;        /* 罫線 */
-  --paper: #fdfdf8;
-  --note-y: #fff6a8;
-  --note-g: #dff5b8;
-  --note-b: #cfeafb;
-  --note-o: #ffdcb8;
-  --tape: rgba(240, 190, 120, 0.55);
+  --navy: #1b1b3a;        /* 本文 */
+  --navy-sub: #45456a;
+  --mag: #d1006f;         /* マゼンタ（アクセント文字） */
+  --tq: #007f8c;          /* ターコイズ（文字用の濃いめ） */
+  --tq-bg: #12c2d4;
+  --sun: #ffc61a;
+  --vio: #6a2bd9;
+  --lime: #8bd400;
+  --bg-sky: #f0fbfd;
+  --bg-blush: #fff4f9;
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'%3E%3Cpath d='M0 4 Q6 0 12 4 T24 4' fill='none' stroke='%23d1006f' stroke-width='3'/%3E%3C/svg%3E");
+  --confetti:
+    radial-gradient(circle at 8% 12%, var(--sun) 0 5px, transparent 6px),
+    radial-gradient(circle at 22% 78%, var(--tq-bg) 0 4px, transparent 5px),
+    radial-gradient(circle at 41% 30%, #ff6fae 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 88%, var(--lime) 0 5px, transparent 6px),
+    radial-gradient(circle at 77% 18%, var(--vio) 0 3px, transparent 4px),
+    radial-gradient(circle at 92% 62%, var(--sun) 0 4px, transparent 5px);
 }
 
 body {
-  font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
-  color: var(--ink);
-  background-color: var(--paper);
-  background-image: repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px);
+  font-family: 'BIZ UDPGothic', 'Noto Sans JP', sans-serif;
+  color: var(--navy);
+  background: #ffffff;
 }
 
-/* 手書き風の見出しフォント */
-.section-title, .hero-title, .faculty-info h3, .student-card h4, .area-card h3,
-.cta-block h3, .stat-num, .nav-logo {
-  font-family: 'Klee One', 'Zen Kaku Gothic New', sans-serif;
-  font-weight: 600;
+.section-title, .hero-title, .stat-num, .cta-block h3, .nav-logo {
+  font-family: 'Mochiy Pop One', 'BIZ UDPGothic', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-/* Nav：ノートの上端 */
+/* Nav：カラーストライプの帯 */
 nav {
-  background: rgba(253,253,248,0.96);
-  border-bottom: 2px solid var(--pen-red);
-  box-shadow: 0 2px 0 var(--rule);
+  background: #ffffff;
+  border-bottom: none;
+  box-shadow: none;
+  background-image: linear-gradient(90deg, var(--mag) 0 25%, var(--sun) 25% 50%, var(--tq-bg) 50% 75%, var(--vio) 75%);
+  background-size: 100% 4px;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
-.nav-logo { color: var(--ink); font-size: 0.9rem; }
-.nav-logo::before { content: '✎ '; color: var(--pen-red); }
-.nav-links a { color: var(--ink-sub); }
-.nav-links a::after { background: var(--hl); height: 8px; bottom: 0; z-index: -1; border-radius: 2px; }
-.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-logo { color: var(--mag); font-size: 0.85rem; }
+.nav-links a { color: var(--navy-sub); font-weight: 700; }
+.nav-links a::after { background: var(--mag); height: 3px; border-radius: 3px; }
+.nav-links a:hover, .nav-links a.active { color: var(--mag); }
 
-/* セクション：左の赤い余白線 */
-section { position: relative; }
-#news, #about, #members, #research, #contact { background: transparent; }
-#news::before, #about::before, #members::before, #research::before, #contact::before {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0; left: 56px;
-  width: 2px;
-  background: rgba(200,50,60,0.35);
-  pointer-events: none;
-}
+/* セクション背景：交互に色づけ＋紙吹雪 */
+#news    { background: var(--bg-blush); background-image: var(--confetti); background-size: 520px 420px; }
+#about   { background: #ffffff; }
+#members { background: var(--bg-sky); background-image: var(--confetti); background-size: 600px 480px; }
+#research{ background: #ffffff; }
+#contact { background: var(--bg-blush); background-image: var(--confetti); background-size: 520px 420px; }
 
-.section-label { color: var(--pen-red); font-family: 'Klee One', sans-serif; letter-spacing: 0.12em; }
-.section-label::before { content: '★ '; }
-.section-title {
-  color: var(--ink);
+.section-label {
   display: inline-block;
-  background: linear-gradient(transparent 58%, var(--hl) 58%, var(--hl) 92%, transparent 92%);
-  padding: 0 0.3rem;
+  color: #ffffff;
+  background: var(--tq);
+  padding: 0.25rem 0.8rem;
+  border-radius: 2rem;
+}
+.section-title { color: var(--navy); }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 120px; height: 8px;
+  margin-top: 0.6rem;
+  background: var(--wave) repeat-x;
 }
 .section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
-.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--ink-sub); }
-.subsection-label, .info-card h4, .access-block h3, .access-list .label { color: var(--pen-red); }
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--navy-sub); }
+.subsection-label, .info-card h4, .access-block h3, .access-list .label { color: var(--mag); }
 .subsection-label::after, .access-block h3::after {
-  height: 0;
-  background: none;
-  border-top: 2px dashed rgba(200,50,60,0.4);
+  height: 8px;
+  background: var(--wave) repeat-x;
+  opacity: 0.5;
 }
 .grade-label {
   display: inline-block;
-  color: var(--ink);
-  font-family: 'Klee One', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  border-bottom: 3px solid var(--hl);
-  padding: 0 0.2rem;
-}
-
-/* Hero：開いたノート */
-#home {
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(90deg, transparent 0 calc(50% - 1px), rgba(31,58,104,0.08) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
-    repeating-linear-gradient(to bottom, transparent 0 39px, var(--rule) 39px 40px);
-}
-#home::before {
-  width: 22px; height: auto;
-  top: 90px; bottom: 30px; left: 34px; right: auto;
-  border-radius: 0;
-  background: radial-gradient(circle, #e6e9ef 0 6px, #c7ccd6 6px 7px, transparent 7px) 0 0 / 22px 44px repeat-y;
-  animation: none;
-  opacity: 1;
-}
-#home::after { display: none; }
-.grid-bg { display: none; }
-.badge {
-  background: var(--tape);
-  border: none;
-  color: var(--ink);
-  border-radius: 2px;
-  transform: rotate(-3deg);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
-.hero-title {
-  background: linear-gradient(transparent 60%, var(--hl) 60%, var(--hl) 90%, transparent 90%);
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: var(--ink);
-  color: var(--ink);
-  display: table;
-  margin: 0 auto 1rem;
-  padding: 0 0.4rem;
-}
-.hero-subtitle { color: var(--pen-red); font-family: 'Klee One', sans-serif; font-weight: 600; }
-.hero-desc { color: var(--ink-sub); }
-.btn-jump {
-  background: #ffffff;
-  border: 1.5px solid var(--ink);
-  color: var(--ink);
-  border-radius: 4px;
-  box-shadow: 3px 3px 0 var(--ink);
-}
-.btn-jump:nth-child(5n+1) { background: var(--note-y); }
-.btn-jump:nth-child(5n+2) { background: var(--note-g); }
-.btn-jump:nth-child(5n+3) { background: var(--note-b); }
-.btn-jump:nth-child(5n+4) { background: var(--note-o); }
-.btn-jump:hover {
-  background: var(--hl);
-  border-color: var(--ink);
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--ink);
-}
-
-/* Stats：時間割のマス目 */
-.stats-strip { background: #ffffff; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
-.stat-item { border-right: 1.5px dashed var(--rule); }
-.stat-item:hover { background: var(--note-y); }
-.stat-num { color: var(--ink); }
-
-/* カード共通：方眼の紙 */
-.faculty-card, .area-card, .pub-item, .misc-item, .info-card, .access-block {
-  background: #ffffff;
-  border: 1.5px solid var(--ink);
-  border-radius: 6px;
-  box-shadow: 4px 4px 0 rgba(31,58,104,0.18);
-}
-.faculty-card:hover, .area-card:hover, .pub-item:hover, .misc-item:hover, .info-card:hover {
-  border-color: var(--ink);
-  box-shadow: 6px 6px 0 rgba(31,58,104,0.28);
-}
-.faculty-card { overflow: visible; }
-.faculty-card::before {
-  /* 左のラインをマスキングテープに */
-  width: 90px; height: 22px;
-  top: -10px; left: 24px;
-  background: var(--tape);
-  transform: rotate(-4deg);
-}
-.avatar {
-  background: var(--note-b);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-}
-.faculty-info h3, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--ink); }
-.faculty-info .role { color: var(--pen-red); }
-.area-card::after { height: 6px; background: var(--hl); }
-
-/* 学生カード：付箋 */
-.student-card {
-  position: relative;
-  background: var(--note-y);
-  border: none;
-  border-radius: 2px 2px 14px 2px;
-  box-shadow: 0 6px 10px -4px rgba(31,58,104,0.25);
-  transform: rotate(-1deg);
-}
-.student-card:nth-child(4n+2) { background: var(--note-g); transform: rotate(1deg); }
-.student-card:nth-child(4n+3) { background: var(--note-b); transform: rotate(-0.5deg); }
-.student-card:nth-child(4n+4) { background: var(--note-o); transform: rotate(1.2deg); }
-.student-card::before {
-  content: '';
-  position: absolute;
-  top: -9px; left: 50%;
-  width: 64px; height: 18px;
-  margin-left: -32px;
-  background: rgba(255,255,255,0.6);
-  border-left: 1px dashed rgba(31,58,104,0.15);
-  border-right: 1px dashed rgba(31,58,104,0.15);
+  color: var(--navy);
+  background: var(--sun);
+  padding: 0.3rem 0.9rem;
+  border-radius: 0.5rem;
   transform: rotate(-2deg);
 }
-.student-card:hover {
+
+/* Hero：バイオレット→マゼンタ＋紙吹雪 */
+#home { background: linear-gradient(135deg, #5b22c9 0%, #8a1fc4 45%, #c4007a 100%); }
+#home::before {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(255,198,26,0.35) 0%, transparent 65%);
+}
+#home::after { background: radial-gradient(circle, rgba(18,194,212,0.35) 0%, transparent 65%); }
+.grid-bg {
+  background-image: var(--confetti);
+  background-size: 380px 300px;
+  opacity: 0.55;
+}
+.badge {
+  background: var(--sun);
   border: none;
-  transform: rotate(0deg) translateY(-4px);
-  box-shadow: 0 12px 16px -6px rgba(31,58,104,0.3);
+  color: var(--navy);
+  font-weight: 700;
 }
-.student-avatar { background: rgba(255,255,255,0.7); border: 1.5px solid var(--ink); }
-.student-card h4 { color: var(--ink); font-size: 1.05rem; }
-.student-card .grade { color: var(--pen-red); }
-.student-card .theme { color: var(--ink-sub); }
+.hero-title {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+  text-shadow: 3px 3px 0 var(--tq-bg);
+}
+.hero-subtitle { color: #ffe27a; font-weight: 700; }
+.hero-desc { color: #ffffff; }
+.btn-jump {
+  background: #ffffff;
+  border: none;
+  color: var(--mag);
+  font-weight: 700;
+  border-radius: 2rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.btn-jump:nth-child(5n+2) { color: var(--tq); }
+.btn-jump:nth-child(5n+3) { color: var(--vio); }
+.btn-jump:nth-child(5n+4) { color: #b35a00; }
+.btn-jump:hover {
+  background: var(--sun);
+  color: var(--navy);
+  border-color: transparent;
+  transform: translateY(-3px) scale(1.04);
+}
 
-/* タグ・バッジ・ボタン：蛍光ペンとシール */
-.tag, .pub-year, .misc-year, .pub-link, .grant-badge {
-  background: var(--hl);
-  border: 1px solid rgba(31,58,104,0.35);
-  color: var(--ink);
-  border-radius: 3px;
+/* Stats：4色のブロック */
+.stats-strip { border: none; }
+.stat-item { border-right: none; color: #ffffff; }
+.stat-item:nth-child(4n+1) { background: var(--mag); }
+.stat-item:nth-child(4n+2) { background: var(--tq); }
+.stat-item:nth-child(4n+3) { background: var(--vio); }
+.stat-item:nth-child(4n+4) { background: var(--sun); }
+.stat-item:hover { filter: brightness(1.08); }
+.stat-item:nth-child(-n+3) .stat-num, .stat-item:nth-child(-n+3) .stat-label { color: #ffffff; }
+.stat-item:nth-child(4n+4) .stat-num, .stat-item:nth-child(4n+4) .stat-label { color: var(--navy); }
+
+/* カード共通：白地＋色つきの上帯、ふわっと影 */
+.faculty-card, .area-card, .pub-item, .misc-item, .info-card, .access-block, .student-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 22px rgba(106,43,217,0.12);
 }
-.pub-link:hover { background: #ffe94a; border-color: var(--ink); }
+.faculty-card:hover, .area-card:hover, .pub-item:hover, .misc-item:hover, .info-card:hover, .student-card:hover {
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(209,0,111,0.18);
+}
+.faculty-card::before {
+  width: 100%; height: 8px;
+  background: linear-gradient(90deg, var(--mag), var(--sun), var(--tq-bg), var(--vio));
+}
+.avatar {
+  background: var(--sun);
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 0 4px var(--mag);
+}
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--navy); }
+.faculty-info .role { color: var(--mag); }
+
+.student-card { border-top: 8px solid var(--mag); }
+.student-card:nth-child(4n+2) { border-top-color: var(--tq-bg); }
+.student-card:nth-child(4n+3) { border-top-color: var(--sun); }
+.student-card:nth-child(4n+4) { border-top-color: var(--vio); }
+.student-card:hover { transform: translateY(-4px) rotate(-1deg); }
+.student-avatar { background: #ffe0ef; border: none; }
+.student-card:nth-child(4n+2) .student-avatar { background: #d4f6fa; }
+.student-card:nth-child(4n+3) .student-avatar { background: #fff1c2; }
+.student-card:nth-child(4n+4) .student-avatar { background: #e8ddfb; }
+.student-card .grade { color: var(--mag); }
+.student-card .theme { color: var(--navy-sub); }
+
+.area-card::after { height: 6px; background: linear-gradient(90deg, var(--mag), var(--sun), var(--tq-bg)); }
+.area-card .area-icon {
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: #fff1c2;
+}
+.area-card:nth-child(3n+2) .area-icon { background: #d4f6fa; }
+.area-card:nth-child(3n+3) .area-icon { background: #ffe0ef; }
+
+/* タグ・バッジ・ボタン：ビビッドなピル */
+.tag, .pub-year, .misc-year, .grant-badge {
+  background: var(--tq);
+  border: none;
+  color: #ffffff;
+  border-radius: 2rem;
+}
+.tag:nth-child(3n+2) { background: var(--mag); }
+.tag:nth-child(3n+3) { background: var(--vio); }
+.pub-link {
+  background: #ffffff;
+  border: 2px solid var(--mag);
+  color: var(--mag);
+  border-radius: 2rem;
+}
+.pub-link:hover { background: var(--mag); color: #ffffff; border-color: var(--mag); }
 .profile-link {
-  background: #ffffff;
-  border: 1.5px solid var(--ink);
-  color: var(--ink);
-  border-radius: 4px;
-  box-shadow: 2px 2px 0 var(--ink);
+  background: var(--mag);
+  border: none;
+  color: #ffffff;
+  border-radius: 2rem;
 }
-.profile-link:hover { background: var(--hl); border-color: var(--ink); }
+.profile-link:hover { background: var(--vio); border-color: transparent; }
 .btn-outline, .news-more-toggle {
-  border: 1.5px solid var(--ink);
-  color: var(--ink);
-  background: #ffffff;
-  border-radius: 4px;
-  box-shadow: 3px 3px 0 var(--ink);
+  background: var(--mag);
+  border: none;
+  color: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 6px 14px rgba(209,0,111,0.25);
 }
-.btn-outline:hover, .news-more-toggle:hover { background: var(--hl); color: var(--ink); }
-.year-tab { background: #ffffff; border: 1.5px solid var(--ink); color: var(--ink); border-radius: 4px 4px 0 0; }
-.year-tab:hover { background: var(--note-y); border-color: var(--ink); color: var(--ink); }
-.year-tab.active { background: var(--ink); border-color: var(--ink); color: #ffffff; }
+.btn-outline:hover, .news-more-toggle:hover { background: var(--vio); color: #ffffff; }
+.year-tab { background: #ffffff; border: 2px solid var(--tq); color: var(--tq); }
+.year-tab:hover { background: #d4f6fa; border-color: var(--tq); color: var(--tq); }
+.year-tab.active { background: var(--tq); border-color: var(--tq); color: #ffffff; }
 
-/* リスト：チェックリスト */
+/* リスト */
 .feature-list li, .grant-item {
   background: #ffffff;
-  border: 1.5px solid var(--rule);
-  border-left: 4px solid var(--pen-red);
-  border-radius: 4px;
-  color: var(--ink);
+  border-left: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(106,43,217,0.10);
+  color: var(--navy);
 }
-.feature-list li::before { content: '☑'; color: var(--pen-red); }
-.feature-list li .kw { border-bottom-color: var(--pen-red); }
-.tooltip-text { background: var(--ink); color: #ffffff; border-radius: 6px; }
-.tooltip-text::after { border-top-color: var(--ink); }
+.feature-list li::before { content: '●'; color: var(--mag); }
+.feature-list li:nth-child(3n+2)::before { color: var(--tq-bg); }
+.feature-list li:nth-child(3n+3)::before { color: var(--sun); }
+.feature-list li .kw { border-bottom-color: var(--mag); }
+.tooltip-text { background: var(--vio); color: #ffffff; border-radius: 1rem; }
+.tooltip-text::after { border-top-color: var(--vio); }
 
-/* ニュース：ルーズリーフ */
+/* ニュース */
 .news-list {
   background: #ffffff;
-  border: 1.5px solid var(--ink);
-  border-radius: 6px;
+  border-radius: 1.4rem;
   padding: 0.4rem 1.6rem;
-  box-shadow: 4px 4px 0 rgba(31,58,104,0.18);
+  box-shadow: 0 8px 22px rgba(106,43,217,0.12);
 }
-.news-item { border-bottom: 1.5px dashed var(--rule); }
-.news-date { color: var(--ink); font-family: 'Klee One', sans-serif; }
-.news-body a { color: var(--pen-red); font-weight: 700; }
-.news-cat { border-radius: 3px; }
-.news-cat.cat-paper   { background: var(--note-b); color: var(--ink); border-color: rgba(31,58,104,0.3); }
-.news-cat.cat-lecture { background: var(--note-g); color: #2d5a12; border-color: rgba(45,90,18,0.3); }
-.news-cat.cat-conf    { background: var(--note-o); color: #8a3d00; border-color: rgba(138,61,0,0.3); }
-.news-cat.cat-member  { background: var(--hl); color: var(--ink); border-color: rgba(31,58,104,0.3); }
+.news-item { border-bottom: 2px solid #f3e6f7; }
+.news-date { color: var(--navy); }
+.news-body a { color: var(--mag); font-weight: 700; }
+.news-cat { color: #ffffff; border: none; }
+.news-cat.cat-paper   { background: var(--mag); color: #ffffff; }
+.news-cat.cat-lecture { background: var(--tq); color: #ffffff; }
+.news-cat.cat-conf    { background: var(--sun); color: var(--navy); }
+.news-cat.cat-member  { background: var(--vio); color: #ffffff; }
 
 /* 連絡先・フッター */
-.info-card a { color: var(--pen-red); }
+.info-card a { color: var(--mag); }
 .cta-block {
-  background: var(--note-y);
-  border: 2px dashed var(--ink);
-  border-radius: 4px;
+  background: var(--sun);
+  border: none;
+  border-radius: 1.4rem;
 }
+.cta-block h3, .cta-block p { color: var(--navy); }
 footer {
-  background: var(--paper);
-  border-top: 2px solid var(--pen-red);
-  color: var(--ink-sub);
+  background: var(--navy);
+  border-top: none;
+  color: #e9e9ff;
+  background-image: linear-gradient(90deg, var(--mag) 0 25%, var(--sun) 25% 50%, var(--tq-bg) 50% 75%, var(--vio) 75%);
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+  background-color: var(--navy);
 }
-footer::before { content: '✎ ✎ ✎'; display: block; color: var(--pen-red); margin-bottom: 0.4rem; letter-spacing: 0.5em; }
-#totop { background: var(--ink); box-shadow: 3px 3px 0 var(--hl); }
-#totop:hover { background: #142a4f; }
+#totop { background: var(--mag); box-shadow: 0 6px 14px rgba(209,0,111,0.35); }
+#totop:hover { background: var(--vio); }
 
 @media (max-width: 600px) {
-  #news::before, #about::before, #members::before, #research::before, #contact::before { left: 10px; }
-  #home::before { left: 6px; }
-  .hero-title { font-size: 1.65rem; white-space: nowrap; }
   .news-list { padding: 0.2rem 1rem; }
+  .hero-title { font-size: 1.55rem; white-space: nowrap; text-shadow: 2px 2px 0 var(--tq-bg); }
 }
+
+.faculty-info h3 { line-height: 1.45; }

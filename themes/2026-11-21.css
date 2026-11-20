@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=BIZ+UDPGothic:wght@400;700&display=swap');
+
+/* 2026-11-21 ポップ：キャンディ・コンフェッティ
+   ビビッドなマゼンタ×ターコイズ×サンシャイン、紙吹雪、ポップ体の見出し、波線 */
+:root {
+  --navy: #1b1b3a;        /* 本文 */
+  --navy-sub: #45456a;
+  --mag: #d1006f;         /* マゼンタ（アクセント文字） */
+  --tq: #007f8c;          /* ターコイズ（文字用の濃いめ） */
+  --tq-bg: #12c2d4;
+  --sun: #ffc61a;
+  --vio: #6a2bd9;
+  --lime: #8bd400;
+  --bg-sky: #f0fbfd;
+  --bg-blush: #fff4f9;
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'%3E%3Cpath d='M0 4 Q6 0 12 4 T24 4' fill='none' stroke='%23d1006f' stroke-width='3'/%3E%3C/svg%3E");
+  --confetti:
+    radial-gradient(circle at 8% 12%, var(--sun) 0 5px, transparent 6px),
+    radial-gradient(circle at 22% 78%, var(--tq-bg) 0 4px, transparent 5px),
+    radial-gradient(circle at 41% 30%, #ff6fae 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 88%, var(--lime) 0 5px, transparent 6px),
+    radial-gradient(circle at 77% 18%, var(--vio) 0 3px, transparent 4px),
+    radial-gradient(circle at 92% 62%, var(--sun) 0 4px, transparent 5px);
+}
+
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Sans JP', sans-serif;
+  color: var(--navy);
+  background: #ffffff;
+}
+
+.section-title, .hero-title, .stat-num, .cta-block h3, .nav-logo {
+  font-family: 'Mochiy Pop One', 'BIZ UDPGothic', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Nav：カラーストライプの帯 */
+nav {
+  background: #ffffff;
+  border-bottom: none;
+  box-shadow: none;
+  background-image: linear-gradient(90deg, var(--mag) 0 25%, var(--sun) 25% 50%, var(--tq-bg) 50% 75%, var(--vio) 75%);
+  background-size: 100% 4px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.nav-logo { color: var(--mag); font-size: 0.85rem; }
+.nav-links a { color: var(--navy-sub); font-weight: 700; }
+.nav-links a::after { background: var(--mag); height: 3px; border-radius: 3px; }
+.nav-links a:hover, .nav-links a.active { color: var(--mag); }
+
+/* セクション背景：交互に色づけ＋紙吹雪 */
+#news    { background: var(--bg-blush); background-image: var(--confetti); background-size: 520px 420px; }
+#about   { background: #ffffff; }
+#members { background: var(--bg-sky); background-image: var(--confetti); background-size: 600px 480px; }
+#research{ background: #ffffff; }
+#contact { background: var(--bg-blush); background-image: var(--confetti); background-size: 520px 420px; }
+
+.section-label {
+  display: inline-block;
+  color: #ffffff;
+  background: var(--tq);
+  padding: 0.25rem 0.8rem;
+  border-radius: 2rem;
+}
+.section-title { color: var(--navy); }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 120px; height: 8px;
+  margin-top: 0.6rem;
+  background: var(--wave) repeat-x;
+}
+.section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--navy-sub); }
+.subsection-label, .info-card h4, .access-block h3, .access-list .label { color: var(--mag); }
+.subsection-label::after, .access-block h3::after {
+  height: 8px;
+  background: var(--wave) repeat-x;
+  opacity: 0.5;
+}
+.grade-label {
+  display: inline-block;
+  color: var(--navy);
+  background: var(--sun);
+  padding: 0.3rem 0.9rem;
+  border-radius: 0.5rem;
+  transform: rotate(-2deg);
+}
+
+/* Hero：バイオレット→マゼンタ＋紙吹雪 */
+#home { background: linear-gradient(135deg, #5b22c9 0%, #8a1fc4 45%, #c4007a 100%); }
+#home::before {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(255,198,26,0.35) 0%, transparent 65%);
+}
+#home::after { background: radial-gradient(circle, rgba(18,194,212,0.35) 0%, transparent 65%); }
+.grid-bg {
+  background-image: var(--confetti);
+  background-size: 380px 300px;
+  opacity: 0.55;
+}
+.badge {
+  background: var(--sun);
+  border: none;
+  color: var(--navy);
+  font-weight: 700;
+}
+.hero-title {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+  text-shadow: 3px 3px 0 var(--tq-bg);
+}
+.hero-subtitle { color: #ffe27a; font-weight: 700; }
+.hero-desc { color: #ffffff; }
+.btn-jump {
+  background: #ffffff;
+  border: none;
+  color: var(--mag);
+  font-weight: 700;
+  border-radius: 2rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+}
+.btn-jump:nth-child(5n+2) { color: var(--tq); }
+.btn-jump:nth-child(5n+3) { color: var(--vio); }
+.btn-jump:nth-child(5n+4) { color: #b35a00; }
+.btn-jump:hover {
+  background: var(--sun);
+  color: var(--navy);
+  border-color: transparent;
+  transform: translateY(-3px) scale(1.04);
+}
+
+/* Stats：4色のブロック */
+.stats-strip { border: none; }
+.stat-item { border-right: none; color: #ffffff; }
+.stat-item:nth-child(4n+1) { background: var(--mag); }
+.stat-item:nth-child(4n+2) { background: var(--tq); }
+.stat-item:nth-child(4n+3) { background: var(--vio); }
+.stat-item:nth-child(4n+4) { background: var(--sun); }
+.stat-item:hover { filter: brightness(1.08); }
+.stat-item:nth-child(-n+3) .stat-num, .stat-item:nth-child(-n+3) .stat-label { color: #ffffff; }
+.stat-item:nth-child(4n+4) .stat-num, .stat-item:nth-child(4n+4) .stat-label { color: var(--navy); }
+
+/* カード共通：白地＋色つきの上帯、ふわっと影 */
+.faculty-card, .area-card, .pub-item, .misc-item, .info-card, .access-block, .student-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 22px rgba(106,43,217,0.12);
+}
+.faculty-card:hover, .area-card:hover, .pub-item:hover, .misc-item:hover, .info-card:hover, .student-card:hover {
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(209,0,111,0.18);
+}
+.faculty-card::before {
+  width: 100%; height: 8px;
+  background: linear-gradient(90deg, var(--mag), var(--sun), var(--tq-bg), var(--vio));
+}
+.avatar {
+  background: var(--sun);
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 0 4px var(--mag);
+}
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--navy); }
+.faculty-info .role { color: var(--mag); }
+
+.student-card { border-top: 8px solid var(--mag); }
+.student-card:nth-child(4n+2) { border-top-color: var(--tq-bg); }
+.student-card:nth-child(4n+3) { border-top-color: var(--sun); }
+.student-card:nth-child(4n+4) { border-top-color: var(--vio); }
+.student-card:hover { transform: translateY(-4px) rotate(-1deg); }
+.student-avatar { background: #ffe0ef; border: none; }
+.student-card:nth-child(4n+2) .student-avatar { background: #d4f6fa; }
+.student-card:nth-child(4n+3) .student-avatar { background: #fff1c2; }
+.student-card:nth-child(4n+4) .student-avatar { background: #e8ddfb; }
+.student-card .grade { color: var(--mag); }
+.student-card .theme { color: var(--navy-sub); }
+
+.area-card::after { height: 6px; background: linear-gradient(90deg, var(--mag), var(--sun), var(--tq-bg)); }
+.area-card .area-icon {
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: #fff1c2;
+}
+.area-card:nth-child(3n+2) .area-icon { background: #d4f6fa; }
+.area-card:nth-child(3n+3) .area-icon { background: #ffe0ef; }
+
+/* タグ・バッジ・ボタン：ビビッドなピル */
+.tag, .pub-year, .misc-year, .grant-badge {
+  background: var(--tq);
+  border: none;
+  color: #ffffff;
+  border-radius: 2rem;
+}
+.tag:nth-child(3n+2) { background: var(--mag); }
+.tag:nth-child(3n+3) { background: var(--vio); }
+.pub-link {
+  background: #ffffff;
+  border: 2px solid var(--mag);
+  color: var(--mag);
+  border-radius: 2rem;
+}
+.pub-link:hover { background: var(--mag); color: #ffffff; border-color: var(--mag); }
+.profile-link {
+  background: var(--mag);
+  border: none;
+  color: #ffffff;
+  border-radius: 2rem;
+}
+.profile-link:hover { background: var(--vio); border-color: transparent; }
+.btn-outline, .news-more-toggle {
+  background: var(--mag);
+  border: none;
+  color: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 6px 14px rgba(209,0,111,0.25);
+}
+.btn-outline:hover, .news-more-toggle:hover { background: var(--vio); color: #ffffff; }
+.year-tab { background: #ffffff; border: 2px solid var(--tq); color: var(--tq); }
+.year-tab:hover { background: #d4f6fa; border-color: var(--tq); color: var(--tq); }
+.year-tab.active { background: var(--tq); border-color: var(--tq); color: #ffffff; }
+
+/* リスト */
+.feature-list li, .grant-item {
+  background: #ffffff;
+  border-left: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(106,43,217,0.10);
+  color: var(--navy);
+}
+.feature-list li::before { content: '●'; color: var(--mag); }
+.feature-list li:nth-child(3n+2)::before { color: var(--tq-bg); }
+.feature-list li:nth-child(3n+3)::before { color: var(--sun); }
+.feature-list li .kw { border-bottom-color: var(--mag); }
+.tooltip-text { background: var(--vio); color: #ffffff; border-radius: 1rem; }
+.tooltip-text::after { border-top-color: var(--vio); }
+
+/* ニュース */
+.news-list {
+  background: #ffffff;
+  border-radius: 1.4rem;
+  padding: 0.4rem 1.6rem;
+  box-shadow: 0 8px 22px rgba(106,43,217,0.12);
+}
+.news-item { border-bottom: 2px solid #f3e6f7; }
+.news-date { color: var(--navy); }
+.news-body a { color: var(--mag); font-weight: 700; }
+.news-cat { color: #ffffff; border: none; }
+.news-cat.cat-paper   { background: var(--mag); color: #ffffff; }
+.news-cat.cat-lecture { background: var(--tq); color: #ffffff; }
+.news-cat.cat-conf    { background: var(--sun); color: var(--navy); }
+.news-cat.cat-member  { background: var(--vio); color: #ffffff; }
+
+/* 連絡先・フッター */
+.info-card a { color: var(--mag); }
+.cta-block {
+  background: var(--sun);
+  border: none;
+  border-radius: 1.4rem;
+}
+.cta-block h3, .cta-block p { color: var(--navy); }
+footer {
+  background: var(--navy);
+  border-top: none;
+  color: #e9e9ff;
+  background-image: linear-gradient(90deg, var(--mag) 0 25%, var(--sun) 25% 50%, var(--tq-bg) 50% 75%, var(--vio) 75%);
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+  background-color: var(--navy);
+}
+#totop { background: var(--mag); box-shadow: 0 6px 14px rgba(209,0,111,0.35); }
+#totop:hover { background: var(--vio); }
+
+@media (max-width: 600px) {
+  .news-list { padding: 0.2rem 1rem; }
+  .hero-title { font-size: 1.55rem; white-space: nowrap; text-shadow: 2px 2px 0 var(--tq-bg); }
+}
+
+.faculty-info h3 { line-height: 1.45; }
