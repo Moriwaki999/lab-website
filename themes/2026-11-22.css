@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+Antique:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&display=swap');
+
+/* 2026-11-22 シック：チャコールとグレージュ
+   アイボリー地に墨色の文字、ブロンズの細い差し色、明朝の見出し、髪の毛ほどの罫線、角は立てる */
+:root {
+  --char: #2b2a28;        /* 墨色（本文・見出し） */
+  --char-sub: #55524c;
+  --bronze: #7f6240;      /* ブロンズ（差し色・文字用） */
+  --bronze-lt: #b89a72;
+  --greige: #d9d2c7;      /* 罫線 */
+  --ivory: #f6f3ee;
+  --paper: #fbfaf7;
+  --night: #262523;       /* ヒーローの地 */
+}
+
+body {
+  font-family: 'Zen Kaku Gothic Antique', 'Noto Sans JP', sans-serif;
+  color: var(--char);
+  background: var(--ivory);
+  letter-spacing: 0.02em;
+}
+
+.section-title, .hero-title, .faculty-info h3, .student-card h4, .area-card h3,
+.cta-block h3, .stat-num, .pub-content h4 {
+  font-family: 'Shippori Mincho B1', 'Noto Serif JP', serif;
+  font-weight: 700;
+}
+.section-label, .nav-logo, .hero-subtitle, .subsection-label, .badge {
+  font-family: 'Cormorant Garamond', 'Shippori Mincho B1', serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Nav：細い罫線だけ */
+nav {
+  background: rgba(246,243,238,0.96);
+  border-bottom: 1px solid var(--greige);
+  box-shadow: none;
+}
+.nav-logo { color: var(--char); font-size: 1rem; letter-spacing: 0.08em; }
+.nav-links a { color: var(--char-sub); font-weight: 500; letter-spacing: 0.14em; }
+.nav-links a::after { background: var(--bronze); height: 1px; bottom: -4px; }
+.nav-links a:hover, .nav-links a.active { color: var(--char); }
+
+/* セクション */
+#news, #members, #contact { background: var(--ivory); }
+#about, #research { background: var(--paper); }
+section { border-top: 1px solid var(--greige); }
+#home { border-top: none; }
+
+.section-label {
+  color: var(--bronze);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.section-label::before {
+  content: '';
+  width: 36px; height: 1px;
+  background: var(--bronze);
+}
+.section-title { color: var(--char); letter-spacing: 0.08em; font-weight: 500; }
+.section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--char-sub); }
+.mission-text p, .section-desc { line-height: 2; }
+.subsection-label {
+  color: var(--bronze);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+.subsection-label::after, .access-block h3::after { height: 1px; background: var(--greige); }
+.info-card h4, .access-block h3, .access-list .label { color: var(--bronze); }
+.grade-label {
+  color: var(--char);
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  border-left: 2px solid var(--bronze);
+  padding-left: 0.7rem;
+}
+
+/* Hero：墨色の地に細い額縁 */
+#home { background: var(--night); }
+#home::before {
+  width: auto; height: auto;
+  top: 90px; bottom: 30px; left: 30px; right: 30px;
+  border-radius: 0;
+  background: none;
+  border: 1px solid rgba(184,154,114,0.45);
+  animation: none;
+  opacity: 1;
+}
+#home::after {
+  width: auto; height: auto;
+  top: 98px; bottom: 38px; left: 38px; right: 38px;
+  border-radius: 0;
+  background: none;
+  border: 1px solid rgba(184,154,114,0.18);
+  animation: none;
+}
+.grid-bg {
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.018) 0 2px, transparent 2px 6px);
+  background-size: auto;
+}
+.badge {
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--bronze-lt);
+  border-bottom: 1px solid var(--bronze-lt);
+  border-radius: 0;
+  color: #e7dccb;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: none;
+}
+.hero-title {
+  background: none;
+  -webkit-text-fill-color: #f4efe6;
+  color: #f4efe6;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+.hero-subtitle { color: var(--bronze-lt); font-size: 1.2rem; letter-spacing: 0.08em; }
+.hero-desc { color: #cfc8bc; line-height: 2.1; }
+.btn-jump {
+  background: transparent;
+  border: 1px solid rgba(231,220,203,0.45);
+  color: #efe8dc;
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+.btn-jump:hover {
+  background: #efe8dc;
+  border-color: #efe8dc;
+  color: var(--night);
+  transform: none;
+}
+
+/* Stats */
+.stats-strip { background: var(--paper); border-top: 1px solid var(--greige); border-bottom: 1px solid var(--greige); }
+.stat-item { border-right: 1px solid var(--greige); }
+.stat-item:hover { background: var(--ivory); }
+.stat-num { color: var(--char); font-weight: 500; letter-spacing: 0.06em; }
+.stat-label { letter-spacing: 0.15em; }
+
+/* カード：角を立てた平らな紙と細い罫線 */
+.faculty-card, .student-card, .area-card, .pub-item, .misc-item,
+.info-card, .access-block, .cta-block {
+  background: var(--paper);
+  border: 1px solid var(--greige);
+  border-radius: 0;
+  box-shadow: none;
+}
+.faculty-card:hover, .student-card:hover, .area-card:hover, .pub-item:hover,
+.misc-item:hover, .info-card:hover {
+  border-color: var(--char-sub);
+  box-shadow: none;
+  transform: none;
+}
+.faculty-card::before { width: 2px; background: var(--bronze); }
+.avatar {
+  background: var(--ivory);
+  border: 1px solid var(--bronze-lt);
+  box-shadow: inset 0 0 0 5px var(--paper);
+  filter: grayscale(1);
+}
+.student-avatar {
+  background: var(--ivory);
+  border: 1px solid var(--greige);
+  filter: grayscale(1);
+}
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--char); }
+.faculty-info h3 { font-weight: 500; letter-spacing: 0.06em; }
+.faculty-info .role, .student-card .grade { color: var(--bronze); letter-spacing: 0.15em; }
+.student-card .theme { color: var(--char-sub); }
+.area-card::after { height: 1px; background: var(--bronze); }
+.area-icon { filter: grayscale(1) contrast(0.9); opacity: 0.8; }
+.info-icon { filter: grayscale(1); opacity: 0.75; }
+
+/* タグ・バッジ・ボタン */
+.tag, .pub-year, .misc-year, .pub-link, .grant-badge {
+  background: transparent;
+  border: 1px solid var(--greige);
+  color: var(--char-sub);
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.pub-link { color: var(--bronze); border-color: var(--bronze-lt); }
+.pub-link:hover { background: var(--char); color: var(--paper); border-color: var(--char); }
+.profile-link {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--bronze);
+  border-radius: 0;
+  color: var(--bronze);
+  padding-left: 0; padding-right: 0;
+  letter-spacing: 0.08em;
+}
+.profile-link:hover { background: transparent; border-color: var(--char); color: var(--char); }
+.btn-outline, .news-more-toggle {
+  background: transparent;
+  border: 1px solid var(--char);
+  color: var(--char);
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+.btn-outline:hover, .news-more-toggle:hover { background: var(--char); color: var(--paper); transform: none; }
+.year-tab {
+  background: transparent;
+  border: 1px solid var(--greige);
+  color: var(--char-sub);
+  border-radius: 0;
+  letter-spacing: 0.1em;
+}
+.year-tab:hover { border-color: var(--char-sub); color: var(--char); background: var(--paper); }
+.year-tab.active { background: var(--char); border-color: var(--char); color: var(--paper); }
+
+/* リスト */
+.feature-list li, .grant-item {
+  background: var(--paper);
+  border-left: 2px solid var(--bronze);
+  border-radius: 0;
+  color: var(--char);
+}
+.feature-list li::before { content: '—'; color: var(--bronze); }
+.feature-list li .kw { border-bottom: 1px solid var(--bronze); }
+.tooltip-text { background: var(--night); color: #efe8dc; border-radius: 0; }
+.tooltip-text::after { border-top-color: var(--night); }
+
+/* ニュース */
+.news-item { border-bottom: 1px solid var(--greige); }
+.news-date { color: var(--char); font-family: 'Shippori Mincho B1', serif; letter-spacing: 0.08em; }
+.news-body a { color: var(--bronze); text-decoration: underline; text-underline-offset: 3px; }
+.news-cat {
+  border-radius: 0;
+  background: transparent;
+  letter-spacing: 0.12em;
+}
+.news-cat.cat-paper   { color: #5a4a36; border: 1px solid #b8a68c; background: transparent; }
+.news-cat.cat-lecture { color: #3f4d48; border: 1px solid #a7b2ad; background: transparent; }
+.news-cat.cat-conf    { color: #6b4a3e; border: 1px solid #c4a89c; background: transparent; }
+.news-cat.cat-member  { color: #4a4458; border: 1px solid #aea8ba; background: transparent; }
+
+/* 連絡先・フッター */
+.info-card a { color: var(--bronze); }
+.cta-block { border-style: solid; }
+footer {
+  background: var(--night);
+  border-top: none;
+  color: #b9b1a4;
+  letter-spacing: 0.12em;
+}
+#totop { background: var(--char); border-radius: 0; box-shadow: none; }
+#totop:hover { background: var(--bronze); }
+
+@media (max-width: 600px) {
+  #home { padding: 110px 1.6rem 60px; }
+  #home::before { top: 76px; bottom: 16px; left: 12px; right: 12px; }
+  #home::after { top: 82px; bottom: 22px; left: 18px; right: 18px; }
+  .hero-title { font-size: 1.7rem; letter-spacing: 0.06em; white-space: nowrap; }
+}
