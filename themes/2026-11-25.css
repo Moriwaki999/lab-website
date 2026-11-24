@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Fredoka:wght@500;600&display=swap');
+
+/* 2026-11-25 キュート：ミントのギンガムとクリームソーダ
+   ミントのギンガムチェック、レモンクリーム、さくらんぼの赤、ココア色の文字、
+   レースのようなスカラップの縁、ソーダの泡 */
+:root {
+  --cocoa: #5a3e36;       /* 本文 */
+  --cocoa-sub: #7a5c52;
+  --mint: #2f9e86;
+  --mint-dk: #1f6f5e;     /* 文字用の濃いミント */
+  --mint-lt: #d9f5ec;
+  --mint-line: #a6e3d2;
+  --lemon: #fff4c4;
+  --cream: #fffdf6;
+  --cherry: #d63a55;
+  --scallop-mint: radial-gradient(circle at 10px 0, transparent 9px, var(--mint-line) 9.5px, var(--mint-line) 11px, transparent 11.5px) 0 0 / 20px 12px repeat-x;
+}
+
+body {
+  font-family: 'Kiwi Maru', 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  color: var(--cocoa);
+  background: var(--cream);
+}
+
+.section-label, .nav-logo, .badge, .stat-num, .grade-label, .hero-subtitle {
+  font-family: 'Fredoka', 'Kiwi Maru', sans-serif;
+  font-weight: 600;
+}
+.section-title, .hero-title, .faculty-info h3, .student-card h4, .area-card h3, .cta-block h3 {
+  font-family: 'Kiwi Maru', sans-serif;
+  font-weight: 500;
+}
+
+/* Nav：下にスカラップ */
+nav {
+  background: var(--cream);
+  border-bottom: 2px solid var(--mint-line);
+  box-shadow: none;
+}
+.nav-logo { color: var(--mint-dk); font-size: 0.95rem; }
+.nav-logo::before { content: '🍒 '; }
+.nav-links a { color: var(--cocoa-sub); }
+.nav-links a::after { background: var(--cherry); height: 3px; border-radius: 3px; }
+.nav-links a:hover, .nav-links a.active { color: var(--cherry); }
+
+/* セクション */
+#news, #members, #contact { background: var(--cream); }
+#about, #research { background: var(--lemon); }
+#about, #research { position: relative; }
+#about::before, #research::before {
+  /* 上端をレースのように */
+  content: '';
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 14px;
+  background: radial-gradient(circle at 10px 0, var(--cream) 10px, transparent 10.5px) 0 0 / 20px 14px repeat-x;
+}
+
+.section-label {
+  color: var(--mint-dk);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+}
+.section-label::before { content: '○ '; color: var(--cherry); }
+.section-title { color: var(--cocoa); }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 100px; height: 12px;
+  margin-top: 0.4rem;
+  background: var(--scallop-mint);
+}
+.section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--cocoa-sub); }
+.subsection-label, .info-card h4, .access-block h3, .access-list .label { color: var(--mint-dk); }
+.subsection-label::after, .access-block h3::after {
+  height: 12px;
+  background: var(--scallop-mint);
+  opacity: 0.8;
+}
+.grade-label {
+  display: inline-block;
+  color: var(--mint-dk);
+  background: var(--mint-lt);
+  border: 2px solid var(--mint-line);
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+  letter-spacing: 0.06em;
+}
+
+/* Hero：ミントのギンガム＋ソーダの泡 */
+#home {
+  background-color: #f2fbf7;
+  background-image:
+    linear-gradient(90deg, rgba(47,158,134,0.13) 50%, transparent 50%),
+    linear-gradient(rgba(47,158,134,0.13) 50%, transparent 50%);
+  background-size: 44px 44px;
+}
+#home::before {
+  width: 140px; height: 140px;
+  top: 18%; right: 8%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0 12%, rgba(255,255,255,0.4) 13% 40%, rgba(166,227,210,0.5) 41% 70%, transparent 71%);
+  animation: float 9s ease-in-out infinite;
+}
+#home::after {
+  width: 90px; height: 90px;
+  bottom: 16%; left: 9%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0 12%, rgba(255,255,255,0.4) 13% 40%, rgba(166,227,210,0.5) 41% 70%, transparent 71%);
+  animation: float 11s ease-in-out infinite reverse;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.grid-bg { display: none; }
+.hero-content {
+  background: var(--cream);
+  border: 3px solid var(--mint-line);
+  border-radius: 2rem;
+  padding: 2.6rem 2rem 2.2rem;
+  max-width: 820px;
+  box-shadow: 0 10px 0 var(--mint-lt);
+}
+.badge {
+  background: var(--cherry);
+  border: none;
+  color: #ffffff;
+  letter-spacing: 0.12em;
+}
+.hero-title {
+  background: none;
+  -webkit-text-fill-color: var(--cocoa);
+  color: var(--cocoa);
+}
+.hero-subtitle { color: var(--mint-dk); }
+.hero-desc { color: var(--cocoa-sub); margin-bottom: 2rem; }
+.btn-jump {
+  background: var(--mint-lt);
+  border: 2px solid var(--mint-line);
+  color: var(--mint-dk);
+  border-radius: 2rem;
+}
+.btn-jump:hover {
+  background: var(--lemon);
+  border-color: #f1d77a;
+  color: var(--cocoa);
+  transform: translateY(-3px);
+}
+
+/* Stats */
+.stats-strip { background: var(--cream); border-top: 2px solid var(--mint-line); border-bottom: 2px solid var(--mint-line); }
+.stat-item { border-right: 2px dashed var(--mint-line); }
+.stat-item:hover { background: var(--mint-lt); }
+.stat-num { color: var(--mint-dk); }
+.stat-item:nth-child(even) .stat-num { color: var(--cherry); }
+
+/* カード：レースの縁取りつき */
+.faculty-card, .student-card, .area-card, .pub-item, .misc-item,
+.info-card, .access-block, .cta-block {
+  background: #ffffff;
+  border: 2px solid var(--mint-line);
+  border-radius: 1.2rem;
+  box-shadow: none;
+}
+.faculty-card:hover, .student-card:hover, .area-card:hover, .pub-item:hover,
+.misc-item:hover, .info-card:hover {
+  border-color: var(--mint);
+  box-shadow: 0 6px 0 var(--mint-lt);
+}
+.faculty-card::before {
+  width: 100%; height: 12px;
+  top: 0; left: 0;
+  background: radial-gradient(circle at 10px 0, var(--mint-line) 8px, transparent 8.5px) 0 0 / 20px 12px repeat-x;
+}
+.avatar {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0 14%, var(--mint-lt) 15%);
+  border: 3px solid var(--mint-line);
+}
+.student-avatar {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0 14%, var(--mint-lt) 15%);
+  border: 2px solid var(--mint-line);
+}
+.student-card:nth-child(3n+2) .student-avatar { background: radial-gradient(circle at 35% 30%, #ffffff 0 14%, var(--lemon) 15%); border-color: #f1d77a; }
+.student-card:nth-child(3n+3) .student-avatar { background: radial-gradient(circle at 35% 30%, #ffffff 0 14%, #ffe1e6 15%); border-color: #f5b3bf; }
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--cocoa); }
+.faculty-info .role, .student-card .grade { color: var(--cherry); }
+.student-card .theme { color: var(--cocoa-sub); }
+.area-card { background: #ffffff; }
+.area-card::after { height: 12px; background: var(--scallop-mint); }
+
+/* タグ・バッジ・ボタン */
+.tag, .pub-year, .misc-year, .grant-badge {
+  background: var(--mint-lt);
+  border: 1.5px solid var(--mint-line);
+  color: var(--mint-dk);
+  border-radius: 2rem;
+}
+.pub-link {
+  background: #ffe8ec;
+  border: 1.5px solid #f5b3bf;
+  color: #b42d46;
+  border-radius: 2rem;
+}
+.pub-link:hover { background: var(--cherry); color: #ffffff; border-color: var(--cherry); }
+.profile-link {
+  background: #ffffff;
+  border: 2px solid var(--mint-line);
+  color: var(--mint-dk);
+  border-radius: 2rem;
+}
+.profile-link:hover { background: var(--mint-lt); border-color: var(--mint); }
+.btn-outline, .news-more-toggle {
+  background: #ffffff;
+  border: 2px solid var(--cherry);
+  color: var(--cherry);
+  border-radius: 2rem;
+}
+.btn-outline:hover, .news-more-toggle:hover { background: var(--cherry); color: #ffffff; }
+.year-tab { background: #ffffff; border: 2px solid var(--mint-line); color: var(--cocoa-sub); }
+.year-tab:hover { background: var(--mint-lt); border-color: var(--mint); color: var(--mint-dk); }
+.year-tab.active { background: var(--mint-dk); border-color: var(--mint-dk); color: #ffffff; }
+
+/* リスト */
+.feature-list li, .grant-item {
+  background: #ffffff;
+  border: 2px solid var(--mint-line);
+  border-left: 2px solid var(--mint-line);
+  border-radius: 1rem;
+  color: var(--cocoa);
+}
+.feature-list li::before { content: '🍒'; font-size: 0.85rem; }
+.feature-list li .kw { border-bottom: 1.5px dotted var(--cherry); }
+.tooltip-text { background: var(--cocoa); color: #fff7ee; border-radius: 1rem; }
+.tooltip-text::after { border-top-color: var(--cocoa); }
+
+/* ニュース */
+.news-list {
+  background: #ffffff;
+  border: 2px solid var(--mint-line);
+  border-radius: 1.4rem;
+  padding: 0.6rem 1.6rem 0.4rem;
+  position: relative;
+}
+.news-item { border-bottom: 2px dashed var(--mint-lt); }
+.news-date { color: var(--cocoa); }
+.news-body a { color: var(--cherry); font-weight: 500; }
+.news-cat { border-radius: 2rem; }
+.news-cat.cat-paper   { background: #ffe8ec; color: #b42d46; border: 1px solid #f5b3bf; }
+.news-cat.cat-lecture { background: var(--mint-lt); color: var(--mint-dk); border: 1px solid var(--mint-line); }
+.news-cat.cat-conf    { background: var(--lemon); color: #7a5a00; border: 1px solid #f1d77a; }
+.news-cat.cat-member  { background: #efe6ff; color: #6343a8; border: 1px solid #d3c2f5; }
+
+/* 連絡先・フッター */
+.info-card a { color: var(--cherry); }
+.cta-block { background: var(--mint-lt); border-style: dashed; }
+footer {
+  background: var(--mint-lt);
+  border-top: none;
+  color: var(--mint-dk);
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: 0; right: 0;
+  height: 12px;
+  background: radial-gradient(circle at 10px 12px, var(--mint-lt) 10px, transparent 10.5px) 0 0 / 20px 12px repeat-x;
+}
+#totop { background: var(--cherry); box-shadow: 0 4px 0 #a92a40; }
+#totop:hover { background: #b42d46; }
+
+@media (max-width: 600px) {
+  .hero-content { padding: 2rem 1.1rem 1.8rem; border-radius: 1.4rem; }
+  .hero-title { font-size: 1.5rem; white-space: nowrap; }
+  #home::before { width: 80px; height: 80px; right: 4%; top: 10%; }
+  #home::after { width: 60px; height: 60px; left: 3%; bottom: 6%; }
+  .news-list { padding: 0.3rem 1rem; }
+}
