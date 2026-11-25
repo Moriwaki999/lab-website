@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+/* 2026-11-26 クール：ミッドナイト・グラス
+   深い夜色のダークモード、エレクトリックシアン×バイオレットの光、
+   すりガラスのカード、モノスペースのラベル、細いグリッドとオーロラ */
+:root {
+  --bg: #0b1220;          /* ページ地 */
+  --bg-2: #0f1a2e;
+  --glass: rgba(148, 197, 255, 0.06);
+  --glass-line: rgba(148, 197, 255, 0.18);
+  --text: #e6edf6;
+  --text-sub: #a9b8cc;
+  --cyan: #38d6f5;
+  --violet: #a78bfa;
+  --mint-glow: #5eead4;
+}
+
+body {
+  font-family: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.section-label, .subsection-label, .nav-logo, .badge, .grade-label, .stat-num,
+.news-date, .pub-year, .misc-year, .grant-badge, .faculty-info .role, .student-card .grade,
+.info-card h4, .access-block h3 {
+  font-family: 'JetBrains Mono', 'IBM Plex Sans JP', monospace;
+}
+.section-title, .hero-title, .faculty-info h3, .student-card h4, .area-card h3, .cta-block h3 {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-weight: 700;
+}
+
+/* Nav：すりガラス */
+nav {
+  background: rgba(11, 18, 32, 0.78);
+  border-bottom: 1px solid var(--glass-line);
+  box-shadow: 0 1px 24px rgba(56, 214, 245, 0.06);
+}
+.nav-logo { color: var(--cyan); font-size: 0.78rem; }
+.nav-logo::before { content: '> '; color: var(--violet); }
+.nav-links a { color: var(--text-sub); }
+.nav-links a::after { background: linear-gradient(90deg, var(--cyan), var(--violet)); box-shadow: 0 0 8px var(--cyan); }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+/* セクション：細いグリッド */
+#news, #members, #contact { background: var(--bg); }
+#about, #research {
+  background-color: var(--bg-2);
+  background-image:
+    linear-gradient(rgba(148,197,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,197,255,0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.section-label { color: var(--cyan); letter-spacing: 0.18em; }
+.section-label::before { content: '// '; color: var(--violet); }
+.section-title { color: var(--text); }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 72px; height: 2px;
+  margin-top: 0.8rem;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  box-shadow: 0 0 12px rgba(56,214,245,0.7);
+}
+.section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--text-sub); }
+.subsection-label { color: var(--violet); }
+.subsection-label span { color: var(--text-sub) !important; }
+.subsection-label::after, .access-block h3::after { height: 1px; background: linear-gradient(90deg, var(--glass-line), transparent); }
+.info-card h4, .access-block h3, .access-list .label { color: var(--cyan); }
+.grade-label { color: var(--mint-glow); letter-spacing: 0.14em; }
+.grade-label::before { content: '# '; color: var(--violet); }
+
+/* Hero：オーロラとグリッド */
+#home { background: radial-gradient(ellipse at 50% 120%, #10213d 0%, var(--bg) 60%); }
+#home::before {
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(56,214,245,0.22) 0%, transparent 65%);
+  top: -160px; right: -140px;
+}
+#home::after {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(167,139,250,0.22) 0%, transparent 65%);
+  bottom: -160px; left: -120px;
+}
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(148,197,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,197,255,0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+.badge {
+  background: rgba(56,214,245,0.08);
+  border: 1px solid rgba(56,214,245,0.45);
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+}
+.hero-title {
+  background: linear-gradient(100deg, #ffffff 10%, var(--cyan) 55%, var(--violet) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 22px rgba(56,214,245,0.25));
+}
+.hero-subtitle { color: var(--text-sub); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; letter-spacing: 0.08em; }
+.hero-desc { color: var(--text-sub); }
+.btn-jump {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  color: var(--text);
+  border-radius: 0.6rem;
+  backdrop-filter: blur(8px);
+}
+.btn-jump:hover {
+  background: rgba(56,214,245,0.12);
+  border-color: var(--cyan);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(56,214,245,0.35);
+}
+
+/* Stats */
+.stats-strip { background: var(--bg-2); border-top: 1px solid var(--glass-line); border-bottom: 1px solid var(--glass-line); }
+.stat-item { border-right: 1px solid var(--glass-line); }
+.stat-item:hover { background: rgba(56,214,245,0.05); }
+.stat-num {
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.7rem;
+}
+
+/* カード：すりガラス */
+.faculty-card, .student-card, .area-card, .pub-item, .misc-item,
+.info-card, .access-block, .cta-block {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 0.9rem;
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+.faculty-card:hover, .student-card:hover, .area-card:hover, .pub-item:hover,
+.misc-item:hover, .info-card:hover {
+  border-color: rgba(56,214,245,0.6);
+  box-shadow: 0 0 0 1px rgba(56,214,245,0.25), 0 8px 30px rgba(56,214,245,0.12);
+}
+.faculty-card::before { width: 2px; background: linear-gradient(180deg, var(--cyan), var(--violet)); box-shadow: 0 0 10px var(--cyan); }
+.avatar {
+  background: radial-gradient(circle at 30% 30%, #1d3557, #0b1220);
+  border: 1px solid rgba(56,214,245,0.5);
+  box-shadow: 0 0 18px rgba(56,214,245,0.25);
+}
+.student-avatar { background: #13223b; border: 1px solid var(--glass-line); }
+.student-card:nth-child(2n) .student-avatar { border-color: rgba(167,139,250,0.5); }
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--text); }
+.faculty-info .role, .student-card .grade { color: var(--cyan); font-size: 0.72rem; }
+.student-card .theme { color: var(--text-sub); }
+.pub-content .authors, .pub-content .journal { color: var(--text-sub); }
+.misc-item { color: var(--text-sub); }
+.area-card::after { height: 2px; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
+
+/* タグ・バッジ・ボタン */
+.tag, .pub-year, .misc-year, .grant-badge {
+  background: rgba(56,214,245,0.08);
+  border: 1px solid rgba(56,214,245,0.35);
+  color: var(--cyan);
+  border-radius: 0.4rem;
+}
+.tag:nth-child(even) { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.4); color: #c4b5fd; }
+.pub-link {
+  background: transparent;
+  border: 1px solid rgba(167,139,250,0.5);
+  color: #c4b5fd;
+  border-radius: 0.4rem;
+}
+.pub-link:hover { background: rgba(167,139,250,0.15); border-color: var(--violet); }
+.profile-link {
+  background: transparent;
+  border: 1px solid rgba(56,214,245,0.45);
+  color: var(--cyan);
+  border-radius: 0.4rem;
+}
+.profile-link:hover { background: rgba(56,214,245,0.1); border-color: var(--cyan); }
+.btn-outline, .news-more-toggle {
+  background: transparent;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  border-radius: 0.5rem;
+}
+.btn-outline:hover, .news-more-toggle:hover { background: var(--cyan); color: var(--bg); box-shadow: 0 0 18px rgba(56,214,245,0.45); }
+.year-tab { background: var(--glass); border: 1px solid var(--glass-line); color: var(--text-sub); border-radius: 0.5rem; }
+.year-tab:hover { border-color: var(--cyan); color: var(--text); background: rgba(56,214,245,0.06); }
+.year-tab.active { background: linear-gradient(90deg, var(--cyan), var(--violet)); border-color: transparent; color: #0b1220; }
+
+/* リスト */
+.feature-list li, .grant-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-left: 2px solid var(--cyan);
+  border-radius: 0.6rem;
+  color: var(--text);
+}
+.feature-list li::before { content: '›'; color: var(--cyan); font-weight: 700; }
+.feature-list li .kw { border-bottom: 1px dashed var(--cyan); }
+.tooltip-text { background: #13223b; color: var(--text); border: 1px solid var(--glass-line); border-radius: 0.6rem; }
+.tooltip-text::after { border-top-color: #13223b; }
+
+/* ニュース */
+.news-list {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 0.9rem;
+  padding: 0.4rem 1.6rem;
+}
+.news-item { border-bottom: 1px solid var(--glass-line); }
+.news-date { color: var(--text); font-size: 0.75rem; }
+.news-body { color: var(--text-sub); }
+.news-body a { color: var(--cyan); }
+.news-cat { background: transparent; border-radius: 0.3rem; font-family: 'JetBrains Mono', monospace; }
+.news-cat.cat-paper   { color: var(--cyan); border: 1px solid rgba(56,214,245,0.45); background: rgba(56,214,245,0.06); }
+.news-cat.cat-lecture { color: var(--mint-glow); border: 1px solid rgba(94,234,212,0.45); background: rgba(94,234,212,0.06); }
+.news-cat.cat-conf    { color: #fcd34d; border: 1px solid rgba(252,211,77,0.45); background: rgba(252,211,77,0.06); }
+.news-cat.cat-member  { color: #c4b5fd; border: 1px solid rgba(167,139,250,0.5); background: rgba(167,139,250,0.08); }
+
+/* 連絡先・フッター */
+.info-card a { color: var(--cyan); }
+.cta-block { border-style: dashed; }
+footer {
+  background: #070c16;
+  border-top: 1px solid var(--glass-line);
+  color: var(--text-sub);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+}
+#totop { background: linear-gradient(135deg, var(--cyan), var(--violet)); color: #0b1220; box-shadow: 0 0 18px rgba(56,214,245,0.45); }
+#totop:hover { background: var(--cyan); }
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 1.65rem; white-space: nowrap; }
+  .news-list { padding: 0.2rem 1rem; }
+}
