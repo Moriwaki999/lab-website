@@ -1,245 +1,208 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800&family=Inter:wght@400;600;800&display=swap');
 
-/* 2026-11-26 クール：ミッドナイト・グラス
-   深い夜色のダークモード、エレクトリックシアン×バイオレットの光、
-   すりガラスのカード、モノスペースのラベル、細いグリッドとオーロラ */
+/* 2026-11-27 シンプル：白と黒と、ひとさじのオレンジ
+   真っ白な紙と黒い文字、差し色はオレンジ1色だけ。飾りを引き算して、
+   大きな文字・広い余白・1本の細線・左揃えで見せる */
 :root {
-  --bg: #0b1220;          /* ページ地 */
-  --bg-2: #0f1a2e;
-  --glass: rgba(148, 197, 255, 0.06);
-  --glass-line: rgba(148, 197, 255, 0.18);
-  --text: #e6edf6;
-  --text-sub: #a9b8cc;
-  --cyan: #38d6f5;
-  --violet: #a78bfa;
-  --mint-glow: #5eead4;
+  --ink: #111111;
+  --ink-sub: #555555;
+  --line: #e5e5e5;
+  --soft: #f5f5f5;
+  --accent: #c2410c;      /* オレンジ（白地でも読める濃さ） */
 }
 
 body {
-  font-family: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
-  color: var(--text);
-  background: var(--bg);
+  font-family: 'Inter', 'M PLUS 1p', sans-serif;
+  color: var(--ink);
+  background: #ffffff;
+}
+.section-title, .hero-title, .faculty-info h3, .student-card h4, .area-card h3,
+.cta-block h3, .stat-num, .pub-content h4 {
+  font-family: 'Inter', 'M PLUS 1p', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
-.section-label, .subsection-label, .nav-logo, .badge, .grade-label, .stat-num,
-.news-date, .pub-year, .misc-year, .grant-badge, .faculty-info .role, .student-card .grade,
-.info-card h4, .access-block h3 {
-  font-family: 'JetBrains Mono', 'IBM Plex Sans JP', monospace;
-}
-.section-title, .hero-title, .faculty-info h3, .student-card h4, .area-card h3, .cta-block h3 {
-  font-family: 'IBM Plex Sans JP', sans-serif;
-  font-weight: 700;
-}
+/* Nav */
+nav { background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--line); box-shadow: none; }
+.nav-logo { color: var(--ink); font-weight: 800; letter-spacing: 0; }
+.nav-logo::after { content: '.'; color: var(--accent); }
+.nav-links a { color: var(--ink-sub); font-weight: 500; letter-spacing: 0.02em; }
+.nav-links a::after { background: var(--ink); height: 1px; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
-/* Nav：すりガラス */
-nav {
-  background: rgba(11, 18, 32, 0.78);
-  border-bottom: 1px solid var(--glass-line);
-  box-shadow: 0 1px 24px rgba(56, 214, 245, 0.06);
-}
-.nav-logo { color: var(--cyan); font-size: 0.78rem; }
-.nav-logo::before { content: '> '; color: var(--violet); }
-.nav-links a { color: var(--text-sub); }
-.nav-links a::after { background: linear-gradient(90deg, var(--cyan), var(--violet)); box-shadow: 0 0 8px var(--cyan); }
-.nav-links a:hover, .nav-links a.active { color: var(--text); }
+/* セクション：すべて白、区切りは1本の線だけ */
+#news, #about, #members, #research, #contact { background: #ffffff; }
+#news, #about, #members, #research, #contact { border-top: 1px solid var(--line); }
+section { padding-top: 7rem; padding-bottom: 7rem; }
 
-/* セクション：細いグリッド */
-#news, #members, #contact { background: var(--bg); }
-#about, #research {
-  background-color: var(--bg-2);
-  background-image:
-    linear-gradient(rgba(148,197,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,197,255,0.045) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.section-label { color: var(--cyan); letter-spacing: 0.18em; }
-.section-label::before { content: '// '; color: var(--violet); }
-.section-title { color: var(--text); }
-.section-title::after {
-  content: '';
-  display: block;
-  width: 72px; height: 2px;
-  margin-top: 0.8rem;
-  background: linear-gradient(90deg, var(--cyan), var(--violet));
-  box-shadow: 0 0 12px rgba(56,214,245,0.7);
-}
+.section-label { color: var(--accent); letter-spacing: 0.12em; font-weight: 600; }
+.section-title { color: var(--ink); font-size: clamp(2rem, 4.2vw, 3rem); margin-bottom: 1.6rem; }
 .section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
-.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--text-sub); }
-.subsection-label { color: var(--violet); }
-.subsection-label span { color: var(--text-sub) !important; }
-.subsection-label::after, .access-block h3::after { height: 1px; background: linear-gradient(90deg, var(--glass-line), transparent); }
-.info-card h4, .access-block h3, .access-list .label { color: var(--cyan); }
-.grade-label { color: var(--mint-glow); letter-spacing: 0.14em; }
-.grade-label::before { content: '# '; color: var(--violet); }
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--ink-sub); }
+.subsection-label, .info-card h4, .access-block h3, .access-list .label { color: var(--ink); letter-spacing: 0.1em; }
+.subsection-label::after, .access-block h3::after { height: 1px; background: var(--line); }
+.grade-label { color: var(--ink); letter-spacing: 0.08em; font-weight: 600; text-transform: none; }
 
-/* Hero：オーロラとグリッド */
-#home { background: radial-gradient(ellipse at 50% 120%, #10213d 0%, var(--bg) 60%); }
-#home::before {
-  width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(56,214,245,0.22) 0%, transparent 65%);
-  top: -160px; right: -140px;
-}
-#home::after {
-  width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(167,139,250,0.22) 0%, transparent 65%);
-  bottom: -160px; left: -120px;
-}
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(148,197,255,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,197,255,0.07) 1px, transparent 1px);
-  background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-}
+/* Hero：白、左揃えの大きな文字 */
+#home { background: #ffffff; justify-content: flex-start; padding: 0 8vw; }
+#home::before, #home::after { display: none; }
+.grid-bg { display: none; }
+.hero-content { text-align: left; max-width: 880px; }
 .badge {
-  background: rgba(56,214,245,0.08);
-  border: 1px solid rgba(56,214,245,0.45);
-  color: var(--cyan);
-  letter-spacing: 0.2em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  margin-bottom: 1.6rem;
 }
 .hero-title {
-  background: linear-gradient(100deg, #ffffff 10%, var(--cyan) 55%, var(--violet) 95%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 22px rgba(56,214,245,0.25));
+  background: none;
+  -webkit-text-fill-color: var(--ink);
+  color: var(--ink);
+  font-size: clamp(2.4rem, 6.4vw, 4.8rem);
+  line-height: 1.12;
+  margin-bottom: 1.4rem;
 }
-.hero-subtitle { color: var(--text-sub); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; letter-spacing: 0.08em; }
-.hero-desc { color: var(--text-sub); }
+.hero-subtitle { color: var(--ink-sub); font-weight: 400; }
+.hero-desc { color: var(--ink-sub); margin: 0 0 3rem; max-width: 620px; }
+.jump-links { justify-content: flex-start; gap: 0.4rem 1.8rem; }
 .btn-jump {
-  background: var(--glass);
-  border: 1px solid var(--glass-line);
-  color: var(--text);
-  border-radius: 0.6rem;
-  backdrop-filter: blur(8px);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  padding: 0.3rem 0;
+  font-weight: 600;
 }
-.btn-jump:hover {
-  background: rgba(56,214,245,0.12);
-  border-color: var(--cyan);
-  color: #ffffff;
-  box-shadow: 0 0 18px rgba(56,214,245,0.35);
-}
+.btn-jump::after { content: '→'; transition: transform 0.2s; }
+.btn-jump:hover { background: transparent; color: var(--accent); border-color: var(--accent); transform: none; }
+.btn-jump:hover::after { transform: translateX(3px); }
 
 /* Stats */
-.stats-strip { background: var(--bg-2); border-top: 1px solid var(--glass-line); border-bottom: 1px solid var(--glass-line); }
-.stat-item { border-right: 1px solid var(--glass-line); }
-.stat-item:hover { background: rgba(56,214,245,0.05); }
-.stat-num {
-  background: linear-gradient(90deg, var(--cyan), var(--violet));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 1.7rem;
-}
+.stats-strip { background: #ffffff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat-item { border-right: 1px solid var(--line); text-align: left; padding-left: 2rem; }
+.stat-item:hover { background: #ffffff; }
+.stat-num { color: var(--ink); }
+.stat-item:hover .stat-num { color: var(--accent); }
 
-/* カード：すりガラス */
+/* カード：枠を消し、上の細線だけ */
 .faculty-card, .student-card, .area-card, .pub-item, .misc-item,
 .info-card, .access-block, .cta-block {
-  background: var(--glass);
-  border: 1px solid var(--glass-line);
-  border-radius: 0.9rem;
+  background: #ffffff;
+  border: none;
+  border-top: 1px solid var(--ink);
+  border-radius: 0;
   box-shadow: none;
-  backdrop-filter: blur(6px);
 }
+.faculty-card, .area-card, .info-card { padding-left: 0; padding-right: 0; }
 .faculty-card:hover, .student-card:hover, .area-card:hover, .pub-item:hover,
 .misc-item:hover, .info-card:hover {
-  border-color: rgba(56,214,245,0.6);
-  box-shadow: 0 0 0 1px rgba(56,214,245,0.25), 0 8px 30px rgba(56,214,245,0.12);
+  border-color: var(--accent);
+  box-shadow: none;
+  transform: none;
 }
-.faculty-card::before { width: 2px; background: linear-gradient(180deg, var(--cyan), var(--violet)); box-shadow: 0 0 10px var(--cyan); }
-.avatar {
-  background: radial-gradient(circle at 30% 30%, #1d3557, #0b1220);
-  border: 1px solid rgba(56,214,245,0.5);
-  box-shadow: 0 0 18px rgba(56,214,245,0.25);
-}
-.student-avatar { background: #13223b; border: 1px solid var(--glass-line); }
-.student-card:nth-child(2n) .student-avatar { border-color: rgba(167,139,250,0.5); }
-.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--text); }
-.faculty-info .role, .student-card .grade { color: var(--cyan); font-size: 0.72rem; }
-.student-card .theme { color: var(--text-sub); }
-.pub-content .authors, .pub-content .journal { color: var(--text-sub); }
-.misc-item { color: var(--text-sub); }
-.area-card::after { height: 2px; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
+.faculty-card::before { display: none; }
+.faculty-card { grid-template-columns: 1fr; gap: 0; }
+.avatar, .student-avatar { display: none; }
+.student-card { padding: 1.1rem 0 1.2rem; }
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--ink); }
+.faculty-info h3 { font-size: 1.5rem; }
+.faculty-info .role, .student-card .grade { color: var(--ink-sub); letter-spacing: 0.06em; }
+.student-card .theme { color: var(--ink-sub); }
+.area-card::after { display: none; }
+.area-icon, .info-icon { display: none; }
 
 /* タグ・バッジ・ボタン */
 .tag, .pub-year, .misc-year, .grant-badge {
-  background: rgba(56,214,245,0.08);
-  border: 1px solid rgba(56,214,245,0.35);
-  color: var(--cyan);
-  border-radius: 0.4rem;
+  background: var(--soft);
+  border: none;
+  color: var(--ink);
+  border-radius: 0.25rem;
+  font-weight: 500;
 }
-.tag:nth-child(even) { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.4); color: #c4b5fd; }
 .pub-link {
   background: transparent;
-  border: 1px solid rgba(167,139,250,0.5);
-  color: #c4b5fd;
-  border-radius: 0.4rem;
+  border: none;
+  border-bottom: 1px solid var(--ink-sub);
+  border-radius: 0;
+  color: var(--ink);
+  padding: 0.1rem 0;
 }
-.pub-link:hover { background: rgba(167,139,250,0.15); border-color: var(--violet); }
+.pub-link:hover { background: transparent; color: var(--accent); border-color: var(--accent); }
 .profile-link {
   background: transparent;
-  border: 1px solid rgba(56,214,245,0.45);
-  color: var(--cyan);
-  border-radius: 0.4rem;
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  padding: 0.2rem 0;
 }
-.profile-link:hover { background: rgba(56,214,245,0.1); border-color: var(--cyan); }
+.profile-link:hover { background: transparent; color: var(--accent); border-color: var(--accent); }
 .btn-outline, .news-more-toggle {
-  background: transparent;
-  border: 1px solid var(--cyan);
-  color: var(--cyan);
-  border-radius: 0.5rem;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: #ffffff;
+  border-radius: 0.25rem;
 }
-.btn-outline:hover, .news-more-toggle:hover { background: var(--cyan); color: var(--bg); box-shadow: 0 0 18px rgba(56,214,245,0.45); }
-.year-tab { background: var(--glass); border: 1px solid var(--glass-line); color: var(--text-sub); border-radius: 0.5rem; }
-.year-tab:hover { border-color: var(--cyan); color: var(--text); background: rgba(56,214,245,0.06); }
-.year-tab.active { background: linear-gradient(90deg, var(--cyan), var(--violet)); border-color: transparent; color: #0b1220; }
+.btn-outline:hover, .news-more-toggle:hover { background: var(--accent); border-color: var(--accent); color: #ffffff; transform: none; }
+.year-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--ink-sub);
+  padding: 0.4rem 0.2rem;
+  margin-right: 1rem;
+}
+.year-tab:hover { background: transparent; color: var(--ink); border-color: var(--line); }
+.year-tab.active { background: transparent; color: var(--ink); border-color: var(--accent); }
 
 /* リスト */
 .feature-list li, .grant-item {
-  background: var(--glass);
-  border: 1px solid var(--glass-line);
-  border-left: 2px solid var(--cyan);
-  border-radius: 0.6rem;
-  color: var(--text);
+  background: #ffffff;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-left: none;
+  border-radius: 0;
+  color: var(--ink);
+  padding-left: 0;
 }
-.feature-list li::before { content: '›'; color: var(--cyan); font-weight: 700; }
-.feature-list li .kw { border-bottom: 1px dashed var(--cyan); }
-.tooltip-text { background: #13223b; color: var(--text); border: 1px solid var(--glass-line); border-radius: 0.6rem; }
-.tooltip-text::after { border-top-color: #13223b; }
+.feature-list li::before { content: '—'; color: var(--accent); }
+.feature-list li .kw { border-bottom: 1px dotted var(--ink); }
+.tooltip-text { background: var(--ink); color: #ffffff; border-radius: 0.25rem; }
+.tooltip-text::after { border-top-color: var(--ink); }
 
 /* ニュース */
-.news-list {
-  background: var(--glass);
-  border: 1px solid var(--glass-line);
-  border-radius: 0.9rem;
-  padding: 0.4rem 1.6rem;
+.news-list { border-top: 1px solid var(--ink); }
+.news-item { border-bottom: 1px solid var(--line); }
+.news-date { color: var(--ink); font-weight: 600; }
+.news-body { color: var(--ink); }
+.news-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.news-cat { background: transparent; border: none; padding: 0; border-radius: 0; letter-spacing: 0.04em; }
+.news-cat.cat-paper, .news-cat.cat-lecture, .news-cat.cat-conf, .news-cat.cat-member {
+  background: transparent; border: none; color: var(--ink-sub);
 }
-.news-item { border-bottom: 1px solid var(--glass-line); }
-.news-date { color: var(--text); font-size: 0.75rem; }
-.news-body { color: var(--text-sub); }
-.news-body a { color: var(--cyan); }
-.news-cat { background: transparent; border-radius: 0.3rem; font-family: 'JetBrains Mono', monospace; }
-.news-cat.cat-paper   { color: var(--cyan); border: 1px solid rgba(56,214,245,0.45); background: rgba(56,214,245,0.06); }
-.news-cat.cat-lecture { color: var(--mint-glow); border: 1px solid rgba(94,234,212,0.45); background: rgba(94,234,212,0.06); }
-.news-cat.cat-conf    { color: #fcd34d; border: 1px solid rgba(252,211,77,0.45); background: rgba(252,211,77,0.06); }
-.news-cat.cat-member  { color: #c4b5fd; border: 1px solid rgba(167,139,250,0.5); background: rgba(167,139,250,0.08); }
+.news-cat::before { content: '● '; font-size: 0.55rem; vertical-align: 0.15em; }
+.news-cat.cat-paper::before   { color: var(--accent); }
+.news-cat.cat-lecture::before { color: var(--ink); }
+.news-cat.cat-conf::before    { color: #999999; }
+.news-cat.cat-member::before  { color: var(--ink-sub); }
 
 /* 連絡先・フッター */
-.info-card a { color: var(--cyan); }
-.cta-block { border-style: dashed; }
-footer {
-  background: #070c16;
-  border-top: 1px solid var(--glass-line);
-  color: var(--text-sub);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-}
-#totop { background: linear-gradient(135deg, var(--cyan), var(--violet)); color: #0b1220; box-shadow: 0 0 18px rgba(56,214,245,0.45); }
-#totop:hover { background: var(--cyan); }
+.info-card a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.info-card a:hover { color: var(--accent); }
+.cta-block { text-align: left; padding: 2.4rem 0; }
+footer { background: #ffffff; border-top: 1px solid var(--line); color: var(--ink-sub); text-align: left; padding: 2rem 8vw; }
+#totop { background: var(--ink); border-radius: 0.25rem; box-shadow: none; }
+#totop:hover { background: var(--accent); }
 
 @media (max-width: 600px) {
-  .hero-title { font-size: 1.65rem; white-space: nowrap; }
-  .news-list { padding: 0.2rem 1rem; }
+  #home { padding: 0 1.4rem; }
+  .hero-title { font-size: 1.8rem; white-space: nowrap; }
+  section { padding-top: 5rem; padding-bottom: 5rem; }
+  .stat-item { padding-left: 1.2rem; }
+  footer { padding: 2rem 1.4rem; }
 }
