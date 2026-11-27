@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&family=Murecho:wght@400;500;700&display=swap');
+
+/* 2026-11-28 派手：レッドカーペットのショータイム
+   深紅の放射光（サンバースト）、ずらりと並ぶ電球のマーキー、金箔のグラデーション、
+   金の縁取りカード、黒×金の統計帯。読みやすさは本文の色で確保する */
+:root {
+  --crimson: #8f0d24;
+  --crimson-dk: #5c0716;
+  --wine: #9b1028;        /* 文字用の深紅 */
+  --text: #2a1610;
+  --text-sub: #5e4339;
+  --gold-1: #f9e28a;
+  --gold-2: #e0b240;
+  --gold-3: #b8861b;
+  --gold: linear-gradient(135deg, #fff1b0 0%, #e7b947 30%, #fbe7a0 50%, #c9952a 75%, #f3d77b 100%);
+  --champagne: #fdf0d5;
+  --ivory: #fff9ef;
+  --bulbs: radial-gradient(circle, #fff6c8 0 3px, #f6c945 3.5px 5px, rgba(246,201,69,0.35) 5.5px 8px, transparent 8.5px) 0 50% / 26px 26px repeat-x;
+}
+
+body {
+  font-family: 'Murecho', 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: var(--ivory);
+}
+.section-title, .hero-title, .stat-num, .faculty-info h3, .area-card h3, .cta-block h3,
+.section-label, .badge, .grade-label, .nav-logo {
+  font-family: 'RocknRoll One', 'Murecho', sans-serif;
+  font-weight: 400;
+}
+
+/* Nav：黒地に金の線 */
+nav {
+  background: #1a0b08;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--gold-3), var(--gold-1), var(--gold-3)) 1;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+}
+.nav-logo { color: var(--gold-1); }
+.nav-logo::before { content: '★ '; color: var(--gold-2); }
+.nav-links a { color: #f3e3c3; }
+.nav-links a::after { background: var(--gold); height: 3px; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold-1); }
+
+/* セクション */
+#news, #members, #contact { background: var(--ivory); }
+#about, #research {
+  background-color: var(--champagne);
+  background-image: repeating-conic-gradient(from 0deg at 50% -20%, rgba(224,178,64,0.10) 0deg 6deg, transparent 6deg 12deg);
+}
+
+.section-label {
+  display: inline-block;
+  color: var(--crimson-dk);
+  background: var(--gold);
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  letter-spacing: 0.14em;
+  box-shadow: 0 3px 0 var(--gold-3);
+}
+.section-title { color: var(--wine); font-size: clamp(1.8rem, 3.6vw, 2.6rem); text-shadow: 2px 2px 0 rgba(224,178,64,0.45); }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 140px; height: 6px;
+  margin-top: 0.6rem;
+  background: var(--gold);
+  border-radius: 3px;
+}
+.section-desc, .mission-text p, .faculty-info p, .area-card p, .news-body,
+.info-card p, .access-list .val, .cta-block p, .stat-label { color: var(--text-sub); }
+.subsection-label, .info-card h4, .access-block h3, .access-list .label { color: var(--wine); }
+.subsection-label::before { content: '✦'; color: var(--gold-2); }
+.subsection-label::after, .access-block h3::after { height: 3px; background: var(--gold); border-radius: 2px; }
+.grade-label {
+  display: inline-block;
+  color: #ffffff;
+  background: var(--crimson);
+  padding: 0.35rem 1.1rem;
+  border-radius: 0.3rem;
+  border: 2px solid var(--gold-2);
+  letter-spacing: 0.1em;
+}
+
+/* Hero：深紅の放射光＋電球マーキー */
+#home {
+  background-color: var(--crimson);
+  background-image:
+    radial-gradient(circle at 50% 55%, rgba(255,214,120,0.28) 0%, transparent 45%),
+    repeating-conic-gradient(from 0deg at 50% 55%, #9c1029 0deg 7.5deg, #7a0a1e 7.5deg 15deg);
+}
+#home::before {
+  /* 上の電球 */
+  width: auto; height: 26px;
+  top: 74px; left: 0; right: 0;
+  border-radius: 0;
+  background: var(--bulbs);
+  animation: twinkle 1.6s steps(2) infinite;
+  opacity: 1;
+}
+#home::after {
+  /* 下の電球 */
+  width: auto; height: 26px;
+  top: auto; bottom: 18px; left: 0; right: 0;
+  border-radius: 0;
+  background: var(--bulbs);
+  background-position: 13px 50%;
+  animation: twinkle 1.6s steps(2) infinite reverse;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.grid-bg { display: none; }
+.hero-content {
+  background: rgba(40, 4, 10, 0.55);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 1rem;
+  padding: 2.4rem 2rem;
+  max-width: 860px;
+  box-shadow: 0 0 0 3px var(--gold-2), 0 0 40px rgba(255,200,90,0.35);
+}
+.badge {
+  background: var(--gold);
+  border: none;
+  color: var(--crimson-dk);
+  letter-spacing: 0.16em;
+  box-shadow: 0 3px 0 var(--gold-3);
+}
+.hero-title {
+  background: var(--gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 0 #4a0410) drop-shadow(0 0 18px rgba(255,214,120,0.45));
+  font-size: clamp(2rem, 5.2vw, 3.6rem);
+}
+.hero-subtitle { color: var(--gold-1); letter-spacing: 0.1em; }
+.hero-desc { color: #fff1e0; }
+.btn-jump {
+  background: var(--gold);
+  border: none;
+  color: var(--crimson-dk);
+  border-radius: 2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 0 var(--gold-3), 0 0 14px rgba(255,214,120,0.35);
+}
+.btn-jump:hover {
+  background: #ffffff;
+  color: var(--wine);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 7px 0 var(--gold-3), 0 0 22px rgba(255,214,120,0.6);
+}
+
+/* Stats：黒×金 */
+.stats-strip { background: #1a0b08; border-top: 3px solid var(--gold-2); border-bottom: 3px solid var(--gold-2); }
+.stat-item { border-right: 1px solid rgba(224,178,64,0.35); }
+.stat-item:hover { background: #2a120c; }
+.stat-num {
+  background: var(--gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label { color: #f3e3c3; }
+
+/* カード：金の縁取り */
+.faculty-card, .student-card, .area-card, .pub-item, .misc-item,
+.info-card, .access-block, .cta-block {
+  border: 3px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box, var(--gold) border-box;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(143,13,36,0.12);
+}
+.faculty-card:hover, .student-card:hover, .area-card:hover, .pub-item:hover,
+.misc-item:hover, .info-card:hover {
+  border-color: transparent;
+  box-shadow: 0 10px 26px rgba(143,13,36,0.22), 0 0 0 2px rgba(224,178,64,0.4);
+  transform: translateY(-3px);
+}
+.faculty-card::before { width: 10px; background: linear-gradient(180deg, var(--crimson), var(--crimson-dk)); }
+.avatar {
+  background: radial-gradient(circle at 35% 30%, #c3203c, var(--crimson-dk));
+  border: 4px solid var(--gold-2);
+  box-shadow: 0 0 0 3px #ffffff, 0 0 0 6px var(--gold-3);
+}
+.student-avatar { background: radial-gradient(circle at 35% 30%, #c3203c, var(--crimson-dk)); border: 3px solid var(--gold-2); }
+.faculty-info h3, .student-card h4, .area-card h3, .pub-content h4, .cta-block h3 { color: var(--text); }
+.faculty-info h3 { color: var(--wine); }
+.faculty-info .role, .student-card .grade { color: var(--wine); font-weight: 700; }
+.student-card .theme { color: var(--text-sub); }
+.area-card::after { height: 6px; background: var(--gold); }
+
+/* タグ・バッジ・ボタン */
+.tag, .pub-year, .misc-year, .grant-badge {
+  background: var(--crimson);
+  border: 1.5px solid var(--gold-2);
+  color: #fff4dd;
+  border-radius: 2rem;
+}
+.pub-link {
+  background: var(--gold);
+  border: none;
+  color: var(--crimson-dk);
+  border-radius: 2rem;
+}
+.pub-link:hover { background: var(--crimson); color: #fff4dd; }
+.profile-link {
+  background: var(--gold);
+  border: none;
+  color: var(--crimson-dk);
+  border-radius: 2rem;
+  box-shadow: 0 3px 0 var(--gold-3);
+}
+.profile-link:hover { background: var(--crimson); color: #fff4dd; }
+.btn-outline, .news-more-toggle {
+  background: var(--crimson);
+  border: 2px solid var(--gold-2);
+  color: #fff4dd;
+  border-radius: 2rem;
+  box-shadow: 0 4px 0 var(--crimson-dk);
+}
+.btn-outline:hover, .news-more-toggle:hover { background: var(--gold-2); border-color: var(--gold-3); color: var(--crimson-dk); }
+.year-tab { background: #ffffff; border: 2px solid var(--gold-2); color: var(--wine); }
+.year-tab:hover { background: var(--champagne); border-color: var(--gold-3); color: var(--wine); }
+.year-tab.active { background: var(--crimson); border-color: var(--gold-2); color: #fff4dd; box-shadow: 0 0 12px rgba(224,178,64,0.5); }
+
+/* リスト */
+.feature-list li, .grant-item {
+  border: 2px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box, var(--gold) border-box;
+  border-radius: 0.8rem;
+  color: var(--text);
+}
+.feature-list li::before { content: '★'; color: var(--gold-3); }
+.feature-list li .kw { border-bottom: 2px dotted var(--wine); }
+.tooltip-text { background: #1a0b08; color: #fff1e0; border: 2px solid var(--gold-2); border-radius: 0.6rem; }
+.tooltip-text::after { border-top-color: var(--gold-2); }
+
+/* ニュース */
+.news-list {
+  border: 3px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box, var(--gold) border-box;
+  border-radius: 1rem;
+  padding: 0.4rem 1.6rem;
+  box-shadow: 0 6px 16px rgba(143,13,36,0.12);
+}
+.news-item { border-bottom: 2px dashed rgba(224,178,64,0.5); }
+.news-date { color: var(--wine); }
+.news-body a { color: var(--wine); font-weight: 700; }
+.news-cat { border-radius: 2rem; }
+.news-cat.cat-paper   { background: var(--crimson); color: #fff4dd; border: 1px solid var(--gold-2); }
+.news-cat.cat-lecture { background: #1a0b08; color: var(--gold-1); border: 1px solid var(--gold-2); }
+.news-cat.cat-conf    { background: var(--gold-1); color: var(--crimson-dk); border: 1px solid var(--gold-3); }
+.news-cat.cat-member  { background: #ffffff; color: var(--wine); border: 1px solid var(--wine); }
+
+/* 連絡先・フッター */
+.info-card a { color: var(--wine); font-weight: 700; }
+.cta-block { background: linear-gradient(var(--champagne), var(--champagne)) padding-box, var(--gold) border-box; }
+footer {
+  background: #1a0b08;
+  border-top: 4px solid var(--gold-2);
+  color: #f3e3c3;
+  position: relative;
+}
+footer::before {
+  content: '';
+  display: block;
+  height: 26px;
+  margin: -0.6rem 0 0.6rem;
+  background: var(--bulbs);
+}
+#totop { background: var(--gold); color: var(--crimson-dk); box-shadow: 0 4px 0 var(--gold-3), 0 0 16px rgba(255,214,120,0.5); }
+#totop:hover { background: var(--crimson); color: var(--gold-1); }
+
+@media (max-width: 600px) {
+  .hero-content { padding: 1.8rem 1rem; }
+  .hero-title { font-size: 1.55rem; white-space: nowrap; }
+  #home { padding: 110px 1rem 64px; }
+  #home::before { top: 70px; }
+  .news-list { padding: 0.2rem 1rem; }
+}
